@@ -1,0 +1,54 @@
+atomicwrites==1.4.0
+attrs @ file:///C:/ci_311/attrs_1676422272484/work
+black @ file:///C:/b/abs_620t6ndje8/croot/black_1680737261963/work
+brotlipy==0.7.0
+certifi @ file:///C:/ci_311/certifi_1676421629969/work/certifi
+cffi @ file:///C:/ci_311/cffi_1676423759166/work
+chardet @ file:///D:/bld/chardet_1669990598501/work
+charset-normalizer @ file:///tmp/build/80754af9/charset-normalizer_1630003229654/work
+click @ file:///C:/ci_311/click_1676433091657/work
+colorama @ file:///C:/ci_311/colorama_1676422310965/work
+coloredlogs==15.0.1
+coverage @ file:///C:/b/abs_f1hnjmeyi_/croot/coverage_1680096319603/work
+cryptography @ file:///C:/ci_311/cryptography_1679419210767/work
+deprecation==2.1.0
+docx==0.2.4
+freetype-py==2.3.0
+humanfriendly==10.0
+idna @ file:///C:/ci_311/idna_1676424932545/work
+img2pdf==0.4.4
+iniconfig @ file:///home/linux1/recipes/ci/iniconfig_1610983019677/work
+lxml==4.9.2
+mypy-extensions==0.4.3
+numpy==1.24.3
+ocrmypdf==14.1.0
+opencv-python==4.7.0.72
+packaging @ file:///C:/b/abs_ed_kb9w6g4/croot/packaging_1678965418855/work
+pathspec @ file:///C:/ci_311/pathspec_1679427644142/work
+pdf2image @ file:///home/conda/feedstock_root/build_artifacts/pdf2image_1679223434953/work
+pdfminer.six==20221105
+pikepdf==7.2.0
+Pillow==9.4.0
+platformdirs @ file:///C:/ci_311/platformdirs_1676422658103/work
+pluggy @ file:///C:/ci_311/pluggy_1676422178143/work
+py @ file:///opt/conda/conda-bld/py_1644396412707/work
+pycairo==1.23.0
+pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
+PyMuPDF==1.22.2
+pyOpenSSL @ file:///C:/b/abs_de215ipd18/croot/pyopenssl_1678965319166/work
+PyPDF2==3.0.1
+PyPDF3==1.0.6
+pyreadline3==3.4.1
+PySocks @ file:///C:/ci_311/pysocks_1676425991111/work
+pytesseract @ file:///home/conda/feedstock_root/build_artifacts/pytesseract_1647306555263/work
+pytest==7.1.2
+pytest-cov @ file:///C:/b/abs_f6fe62w9qf/croot/pytest-cov_1680096322346/work
+python-dotenv @ file:///C:/ci_311/python-dotenv_1676455170580/work
+reportlab==4.0.0
+requests @ file:///C:/b/abs_41owkd5ymz/croot/requests_1682607524657/work
+rlPyCairo==0.2.0
+toml @ file:///tmp/build/80754af9/toml_1616166611790/work
+tomli @ file:///C:/ci_311/tomli_1676422027483/work
+tqdm==4.65.0
+urllib3 @ file:///C:/b/abs_3ce53vrdcr/croot/urllib3_1680254693505/work
+win-inet-pton @ file:///C:/ci_311/win_inet_pton_1676425458225/work

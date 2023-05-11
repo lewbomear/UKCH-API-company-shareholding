@@ -1,0 +1,9 @@
+name: UKCH-API-company-shareholding
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.11.3
+  - anaconda
+  - pip
+  - pip:
+    - -r file:requirements.txt
