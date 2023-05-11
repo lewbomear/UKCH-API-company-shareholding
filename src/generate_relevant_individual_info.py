@@ -1,5 +1,4 @@
 import docx
-
 import csv
 import os
 import requests
@@ -91,6 +90,7 @@ def generate_relevant_individual_info():
             company_psc_response = requests.get(company_psc_url, headers=headers)
             company_psc_data = company_psc_response.json()
 
+
             # Check if the 'items' key is present in the company_psc_data dictionary
             if "items" not in company_psc_data:
                 if "resigned_on" in appointment:
@@ -107,15 +107,38 @@ def generate_relevant_individual_info():
             # Loop through the company's persons with significant control and print the name
             psc_names = []
             for psc in company_psc_data["items"]:
-                psc_name = psc["name"]
+                if psc["name"]:
+                    psc_name = psc["name"]
+                """else:
+                    if psc["title"]:
+                        psc_name = psc["title"]
+                    if psc["forename"]:
+                        psc_name += " "
+                        psc_name += psc["forename"]
+                    if psc["middle_name"]:
+                        psc_name += " "
+                        psc_name += psc["middle_name"]
+                    if psc["surname"]:
+                        psc_name += " "
+                        psc_name += psc["surname"]"""
                 psc_names.append(psc_name)
+
+            print(psc_names)
 
             if "resigned_on" in appointment:
                 resigned_on = appointment["resigned_on"]
-                if len(psc_names) > 0:
-                    psc_statement = f"The company has a person with significant control named {psc_names[0]}."
+                if len(psc_names) == 1:
+                    for psc_name in psc_names:
+                        psc_statement = f"The company has a person with significant control named {psc_name}."
                     document.add_paragraph(
-                        f"{officer_name} was appointed {officer_role} of {company_name} ({company_number}) on {appointed_on} and resigned on {resigned_on}. The nature of business is {activity}. {psc_statement}"
+                        f"{officer_name} has been serving as {officer_role} of {company_name} ({company_number}) since {appointed_on}. The nature of business is {activity}. {psc_statement}"
+                    )
+                elif len(psc_names) > 1:
+                    last_name = psc_names.pop()
+                    full_list = ", ".join(psc_names)
+                    psc_statement = f"The company has a persons with significant control named {full_list} and {last_name}."
+                    document.add_paragraph(
+                        f"{officer_name} has been serving as {officer_role} of {company_name} ({company_number}) since {appointed_on}. The nature of business is {activity}. {psc_statement}"
                     )
                 else:
                     psc_statement = (
@@ -125,8 +148,16 @@ def generate_relevant_individual_info():
                         f"{officer_name} has been serving as {officer_role} of {company_name} ({company_number}) since {appointed_on}. The nature of business is {activity}. {psc_statement}"
                     )
             else:
-                if len(psc_names) > 0:
-                    psc_statement = f"The company has a person with significant control named {psc_names[0]}."
+                if len(psc_names) == 1:
+                    for psc_name in psc_names:
+                        psc_statement = f"The company has a person with significant control named {psc_name}."
+                    document.add_paragraph(
+                        f"{officer_name} has been serving as {officer_role} of {company_name} ({company_number}) since {appointed_on}. The nature of business is {activity}. {psc_statement}"
+                    )
+                elif len(psc_names) > 1:
+                    last_name = psc_names.pop()
+                    full_list = ", ".join(psc_names)
+                    psc_statement = f"The company has a persons with significant control named {full_list} and {last_name}."
                     document.add_paragraph(
                         f"{officer_name} has been serving as {officer_role} of {company_name} ({company_number}) since {appointed_on}. The nature of business is {activity}. {psc_statement}"
                     )
