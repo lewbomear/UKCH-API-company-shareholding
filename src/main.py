@@ -1,10 +1,15 @@
+"""
+
+"""
+
+import os
+import re
 import requests
 from pdf2image import convert_from_path
 import pytesseract
 from PIL import Image
-import re
-import os
 from dotenv import load_dotenv
+
 load_dotenv()
 
 # Insert API key
@@ -14,7 +19,8 @@ api_key = os.environ.get("API_KEY")
 company_number = os.environ.get("COMPANY_NO")
 
 # Make a filing history request to get all confirmation statements
-url = f"https://api.company-information.service.gov.uk/company/{company_number}/filing-history?category=confirmation-statement&items_per_page=100"
+url = f"https://api.company-information.service.gov.uk/company/{company_number}/"
+"filing-history?category=confirmation-statement&items_per_page=100"
 
 response = requests.get(url, auth=(api_key, ""))
 
@@ -68,7 +74,8 @@ pytesseract.pytesseract.tesseract_cmd = os.environ.get("TESSERACT_PATH")
 # Load the image
 combined_image = Image.open("confirmation_statement.png")
 
-# Use pytesseract to extract text from the image and format it into one paragraph, while limiting instances of three spaces to two
+# Use pytesseract to extract text from the image and format it into one paragraph,
+# #while limiting instances of three spaces to two
 text = pytesseract.image_to_string(combined_image).replace("\n", "  ")
 while "   " in text and "confirmation  statement" in text:
     text = text.replace("   ", "  ").replace(
@@ -78,10 +85,11 @@ while "   " in text and "confirmation  statement" in text:
 
 print(text)
 
-# Find all instances of "(?<!0 )(\d+) ORDINARY shares held as at the date of this confirmation statement" and the name that follows
+# Find all instances of "(?<!0 )(\d+) ORDINARY shares held as at the date of this
+# #confirmation statement" and the name that follows
 shares = re.findall(
-    r"(?<!0 )(\d+) ORDINARY shares held as at the date of this confirmation statement  Name: (\S+(?: \S+)*)",
-    text,
+    r"(?<!0 )(\d+) ORDINARY shares held as at the date of this"
+    "confirmation statement  Name: (\S+(?: \S+)*)", text,
 )
 
 # Calculate the total number of shares
