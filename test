@@ -60,9 +60,8 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tessera
 combined_image = Image.open('confirmation_statement.png')
 
 # Use pytesseract to extract text from the image and format it into one paragraph, while limiting instances of three spaces to two
-text = pytesseract.image_to_string(combined_image).replace('\n', '  ')
-while '   ' in text and 'confirmation  statement' in text:
-    text = text.replace('   ', '  ').replace('confirmation  statement', 'confirmation statement')
+text = pytesseract.image_to_string(combined_image).replace('\n\n', '\n').replace('\n', '  ').replace('confirmation  statement', 'confirmation statement').replace('this  confirmation', 'this confirmation').replace('of  this confirmation', 'of this confirmation').replace('date  of this', 'date of this').replace(r'\b([A-Z][a-z]+)  ([A-Z][a-z]+)\b', r'\1 \2')
+
 
 
 print(text)
