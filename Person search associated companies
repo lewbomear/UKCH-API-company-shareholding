@@ -11,7 +11,7 @@ document = Document()
 api_key = "APIKEY"
 
 
-officer_name = "XXX"
+officer_name = "XXXX"
 officer_dob = "1970-04"
 
 
@@ -64,6 +64,7 @@ for match in exact_name_dob_matches:
         company_status = appointment['appointed_to']['company_status']
         psc_name = ''
         company_title = f"{company_name} ({company_number})"
+
         # Get the company profile URL
         company_profile_url = f"https://api.company-information.service.gov.uk/company/{company_number}"
         company_profile_response = requests.get(company_profile_url, headers=headers)
@@ -90,10 +91,13 @@ for match in exact_name_dob_matches:
 
         # Loop through the company's persons with significant control and print the name
         psc_names = []
-        for psc in company_psc_data['items']:
-            if 'name' in psc:
-                psc_name = psc['name']
-            psc_names.append(psc_name)
+        if 'items' in company_psc_data and company_psc_data['items']:
+            for psc in company_psc_data['items']:
+                if 'name' in psc:
+                    psc_name = psc['name']
+                    psc_names.append(psc_name)
+        else:
+            print("No PSC data available for this company.")
 
         if "resigned_on" in appointment:
             resigned_on = appointment["resigned_on"]
