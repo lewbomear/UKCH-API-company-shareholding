@@ -1,13 +1,18 @@
 from docx import Document
 import requests
-import json
-import pandas as pd
 import csv
+import json
 
 
 document = Document()
 
 
+
+api_key = "APIKEY"
+
+
+officer_name = "XXX"
+officer_dob = "1970-04"
 
 
 url = f"https://api.company-information.service.gov.uk/search/officers?q=\"{officer_name}\""
@@ -17,6 +22,10 @@ headers = {"Authorization": api_key}
 
 # Add a title to the document
 document.add_heading(f"Associated companies for: {officer_name}", level=1)
+current_heading = document.add_heading('Current appointments', level=1)
+current_end = document.add_paragraph('-')
+former_heading = document.add_heading('Former appointments', level=1)
+former_end = document.add_paragraph('--')
 
 # Load the SIC codes and descriptions from the CSV file
 with open("SIC07_CH_condensed_list_en.csv", newline='') as csvfile:
@@ -44,14 +53,17 @@ for match in exact_name_dob_matches:
     officer_response = requests.get(officer_url, headers=headers)
     officer_data = officer_response.json()
 
+
+
     # Loop through the officer's appointments and print the company name, number, and nature of business
     for appointment in officer_data['items']:
         company_name = appointment['appointed_to']['company_name']
         company_number = appointment['appointed_to']['company_number']
         appointed_on = appointment['appointed_on']
         officer_role = appointment['officer_role']
+        company_status = appointment['appointed_to']['company_status']
         psc_name = ''
-
+        company_title = f"{company_name} ({company_number})"
         # Get the company profile URL
         company_profile_url = f"https://api.company-information.service.gov.uk/company/{company_number}"
         company_profile_response = requests.get(company_profile_url, headers=headers)
@@ -61,23 +73,20 @@ for match in exact_name_dob_matches:
         sic_code = company_profile_data.get('sic_codes', ["N/A"])[0]
         activity = sic_mapping.get(sic_code, "Unknown")
 
+        #Get company status, incorporation date, dissolution date
+
+        company_inc = company_profile_data.get('date_of_creation')
+        if 'date_of_cessation' in company_profile_data:
+            company_dis = company_profile_data['date_of_cessation']
+        else:
+            company_dis = None
+
         # Get the company's persons with significant control data
         company_psc_url = f"https://api.company-information.service.gov.uk/company/{company_number}/persons-with-significant-control"
         company_psc_response = requests.get(company_psc_url, headers=headers)
         company_psc_data = company_psc_response.json()
 
         #print(json.dumps(company_psc_data, indent=4))
-
-        # Check if the 'items' key is present in the company_psc_data dictionary
-        if 'items' not in company_psc_data:
-            if 'resigned_on' in appointment:
-                resigned_on = appointment['resigned_on']
-                document.add_paragraph(
-                    f"{officer_name} was appointed a {officer_role} of {company_name} ({company_number}) on {appointed_on} and resigned on {resigned_on}. The nature of business is {activity}. The company has no persons with significant control.")
-            else:
-                document.add_paragraph(
-                    f"{officer_name} has been serving as {officer_role} of {company_name} ({company_number}) since {appointed_on}. The nature of business is {activity}. The company has no persons with significant control.")
-            continue
 
         # Loop through the company's persons with significant control and print the name
         psc_names = []
@@ -91,40 +100,61 @@ for match in exact_name_dob_matches:
             if len(psc_names) == 1:
                 for psc_name in psc_names:
                     psc_statement = f"The company has a person with significant control named {psc_name}."
-                document.add_paragraph(
-                    f"{officer_name} has been serving as {officer_role} of {company_name} ({company_number}) since {appointed_on}. The nature of business is {activity}. {psc_statement}"
-                )
-            elif len(psc_names) > 1:
-                last_name = psc_names.pop()
-                full_list = ", ".join(psc_names)
-                psc_statement = f"The company has a persons with significant control named {full_list} and {last_name}."
-                document.add_paragraph(
-                    f"{officer_name} has been serving as {officer_role} of {company_name} ({company_number}) since {appointed_on}. The nature of business is {activity}. {psc_statement}"
-                )
-            else:
-                psc_statement = (
-                    "The company has no persons with significant control"
-                )
-                document.add_paragraph(
-                    f"{officer_name} has been serving as {officer_role} of {company_name} ({company_number}) since {appointed_on}. The nature of business is {activity}. {psc_statement}"
-                )
-        else:
-            if len(psc_names) == 1:
-                for psc_name in psc_names:
-                    psc_statement = f"The company has a person with significant control named {psc_name}."
-                document.add_paragraph(
-                    f"{officer_name} has been serving as {officer_role} of {company_name} ({company_number}) since {appointed_on}. The nature of business is {activity}. {psc_statement}"
-                )
+                new_paragraph = former_end.insert_paragraph_before(
+                    f"{company_name} ({company_number}) \n{officer_name} was appointed {officer_role} of {company_name} ({company_number}) on {appointed_on} and resigned on {resigned_on}. The nature of business is {activity}. {psc_statement}")
+
+
             elif len(psc_names) > 1:
                 last_name = psc_names.pop()
                 full_list = ", ".join(psc_names)
                 psc_statement = f"The company has the following persons with significant control: {full_list} and {last_name}."
-                document.add_paragraph(
-                    f"{officer_name} has been serving as {officer_role} of {company_name} ({company_number}) since {appointed_on}. The nature of business is {activity}. {psc_statement}"
-                )
+                new_paragraph = former_end.insert_paragraph_before(
+                    f"{company_name} ({company_number}) \n{officer_name} was appointed {officer_role} of {company_name} ({company_number}) on {appointed_on} and resigned on {resigned_on}. The nature of business is {activity}. {psc_statement}")
+
+
             else:
                 psc_statement = (
                     "The company has no persons with significant control"
                 )
+                new_paragraph = former_end.insert_paragraph_before(
+                    f"{company_name} ({company_number}) \n{officer_name} was appointed {officer_role} of {company_name} on {appointed_on} and resigned on {resigned_on}. The nature of business is {activity}. {psc_statement}")
+
+        else:
+            if len(psc_names) == 1:
+                for psc_name in psc_names:
+                    psc_statement = f"The company has a person with significant control named {psc_name}."
+                    if 'active' in company_status:
+                        new_paragraph = current_end.insert_paragraph_before(
+                    f"{company_name} ({company_number}) \n{officer_name} has been serving as {officer_role} of {company_name} since {appointed_on}. The nature of business is {activity}. {psc_statement}"
+                )
+                    else:
+                        new_paragraph = former_end.insert_paragraph_before(
+                            f"{company_name} ({company_number}) \n{officer_name} served as {officer_role} of {company_name} between {appointed_on} and {company_dis}. The nature of business was {activity}. {psc_statement}"
+                        )
+            elif len(psc_names) > 1:
+                last_name = psc_names.pop()
+                full_list = ", ".join(psc_names)
+                psc_statement = f"The company has the following persons with significant control: {full_list} and {last_name}."
+                if 'active' in company_status:
+                    new_paragraph = current_end.insert_paragraph_before(
+                    f"{company_name} ({company_number}) \n{officer_name} has been serving as {officer_role} of {company_name} since {appointed_on}. The nature of business is {activity}. {psc_statement}"
+                )
+                else:
+                    new_paragraph = former_end.insert_paragraph_before(
+                    f"{company_name} ({company_number}) \n{officer_name} served as {officer_role} of {company_name} between {appointed_on} and {company_dis}. The nature of business is {activity}. {psc_statement}"
+                    )
+
+            else:
+                psc_statement = (
+                    "The company has no persons with significant control"
+                )
+                if 'active' in company_status:
+                    new_paragraph = current_end.insert_paragraph_before(
+                    f"{company_name} ({company_number}) \n{officer_name} has been serving as {officer_role} of {company_name} since {appointed_on}. The nature of business is {activity}. {psc_statement}"
+                )
+                else:
+                    new_paragraph = former_end.insert_paragraph_before(
+                    f"{company_name} ({company_number}) \n{officer_name} served as {officer_role} of {company_name} between {appointed_on} and {company_dis}. The nature of business was {activity}. {psc_statement}"
+                    )
 # Save the document as a Word file
 document.save(f'Associated companies for {officer_name}.docx')
