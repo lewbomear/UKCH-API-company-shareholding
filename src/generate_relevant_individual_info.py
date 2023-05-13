@@ -1,6 +1,7 @@
 import docx
 import csv
 import os
+import json
 import requests
 from print_shareholder_info import print_shareholder_info
 from dotenv import load_dotenv
@@ -54,11 +55,40 @@ def generate_relevant_individual_info():
 
     # Loop through the exact name matches and make a request to each URL in the links dictionary
     for match in exact_name_dob_matches:
-        officer_url = f"https://api.company-information.service.gov.uk{match['links']['self']}"
-        officer_response = requests.get(officer_url, headers=headers)
-        officer_data = officer_response.json()
+        remaining_results = 1
+        items_per_page = 50
+        page_no = 1
+        start_index = 0
+        total_results = -1
+        # officer_data_cache = []
+        while remaining_results > 0:
+            officer_url = f"https://api.company-information.service.gov.uk{match['links']['self']}?page={page_no}&items_per_page={items_per_page}&start_index={start_index}"
+            officer_response = requests.get(officer_url, headers=headers)
+            current_data = officer_response.json() #gets the current data
 
+            with open(f'{officer_name} page {page_no}.json', 'w', encoding='utf-8') as json_file: #open a files to dump the data named by the page
+                json.dump(current_data, json_file,  ensure_ascii=False, indent=4)
+            # officer_data_cache.append(current_data) #adds it to a big cache
 
+            if total_results < 0: #if you haven't checked the total results
+                total_results = current_data['total_results'] #it will fetch the number
+                remaining_results = total_results # and set the remaining results to total
+            remaining_results -= items_per_page #it then removes the ones from the last set
+            start_index += items_per_page #increases the start index to that number
+            if remaining_results < items_per_page: #then if there's less results left
+                items_per_page = remaining_results #set as remainder
+            page_no +=1 #increase page count
+            
+        officer_data = {}
+
+        for current_page in range(1, page_no, 1):
+            with open(f'{officer_name} page {current_page}.json', encoding='utf-8') as json_file:
+                for line in json_file:
+                    converted_data = json.loads(line)
+                    merged[converted_data['items']].update(converted_data) # asuming both file has same ids otherwise use try catch
+
+        merged = list(merged.values())
+        print(merged)
 
         # Loop through the officer's appointments and print the company name, number, and nature of business
         for appointment in officer_data['items']:
@@ -169,7 +199,6 @@ def generate_relevant_individual_info():
     document.save(f'Associated companies for {officer_name}.docx')
     document_text = docx.Document(f"Associated companies for {officer_name}.docx")
     print(document_text)
-
 
 if __name__ == "__main__":
     generate_relevant_individual_info()
