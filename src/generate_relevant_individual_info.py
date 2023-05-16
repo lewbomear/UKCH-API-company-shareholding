@@ -122,7 +122,7 @@ for match in exact_name_dob_matches:
 
         # Loop through the officer's appointments and print the company name, number, and nature of business
         for current_page in range(0, page_no, 1):
-            for appointment in officer_data_cache[current_page]["items"]:
+            for appointment in officer_data["items"]:
                 company_name = appointment["appointed_to"]["company_name"]
                 company_number = appointment["appointed_to"]["company_number"]
                 appointed_on = appointment["appointed_on"]
