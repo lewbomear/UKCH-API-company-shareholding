@@ -66,64 +66,59 @@ def generate_relevant_individual_info():
     # print(json.dumps(exact_name_dob_matches, indent=4))
     print(len(exact_name_dob_matches))
 
-    # Loop through the exact name matches and make a request to each URL in the links dictionary
-    for match in exact_name_dob_matches:
-        print(match)
-        print("haha")
-        page_no = 1
-        items_per_page = 50
-        start_index = 0
-        remaining_results = 1
-        total_results = -1
-        multiple_pages = False
-        officer_data_cache = []
-        while remaining_results > 0:
-            officer_url = f"https://api.company-information.service.gov.uk{match['links']['self']}?page={page_no}&items_per_page={items_per_page}&start_index={start_index}"
-            officer_response = requests.get(officer_url, headers=headers)
-            print(officer_url)
-            current_data = officer_response.json()  # gets the current data
-            #print(current_data)
-            # officer_data_cache.append(current_data) #adds it to a big cache
+officer_data_cache = []  # Store data for all matches
 
-            with open(
+for match in exact_name_dob_matches:
+    match_data = []  # Store data for the current match
+    page_no = 1
+    items_per_page = 50
+    start_index = 0
+    remaining_results = 1
+    total_results = -1
+    multiple_pages = False
+
+    while remaining_results > 0:
+        officer_url = f"https://api.company-information.service.gov.uk{match['links']['self']}?page={page_no}&items_per_page={items_per_page}&start_index={start_index}"
+        officer_response = requests.get(officer_url, headers=headers)
+        current_data = officer_response.json()  # gets the current data
+        match_data.append(current_data)  # adds it to the match data cache
+
+        with open(
                 f"{officer_name} page {page_no}.json", "w", encoding="utf-8"
-            ) as json_file:  # open a files to dump the data named by the page
-                json.dump(current_data, json_file, ensure_ascii=False, indent=4)
+        ) as json_file:  # open a files to dump the data named by the page
+            json.dump(current_data, json_file, ensure_ascii=False, indent=4)
 
-            if total_results < 0:  # if you haven't checked the total results
-                total_results = current_data[
-                    "total_results"
-                ]  # it will fetch the number
-                remaining_results = (
-                    total_results  # and set the remaining results to total
-                )
-                print(total_results)
-                multiple_pages = total_results > items_per_page
-            remaining_results -= (
-                items_per_page  # it then removes the ones from the last set
-            )
-            start_index += items_per_page  # increases the start index to that number
-            if remaining_results < items_per_page:  # then if there's less results left
-                items_per_page = remaining_results  # set as remainder
-            page_no += 1  # increase page count
-            print("bye")
+        if total_results < 0:  # if you haven't checked the total results
+            total_results = current_data["total_results"]  # fetch the number
+            remaining_results = total_results  # set the remaining results to total
+            multiple_pages = total_results > items_per_page
 
-        officer_data = {}
+        remaining_results -= items_per_page
+        start_index += items_per_page
 
-        if multiple_pages:
-            for current_page in range(1, page_no, 1):
-                with open(
+        if remaining_results < items_per_page:
+            items_per_page = remaining_results
+
+        page_no += 1
+
+    officer_data_cache.append(match_data)
+    print(officer_data_cache)
+
+    if multiple_pages:
+        for current_page in range(1, page_no, 1):
+            with open(
                     f"{officer_name} page {current_page}.json"
-                ) as json_file:
-                    for line in json_file:
-                        converted_data = json.loads(line, strict=False)
-                        officer_data[converted_data["items"]].update(
-                            converted_data
-                        )  # asuming both file has same ids otherwise use try catch
+            ) as json_file:
+                for line in json_file:
+                    converted_data = json.loads(line, strict=False)
+                    officer_data[converted_data["items"]].update(
+                        converted_data
+                    )  # asuming both file has same ids otherwise use try catch
 
-            officer_data = list(officer_data.values())
-        else:
-            officer_data = json.load(f"{officer_name} page 1.json")
+        officer_data = list(officer_data.values())
+    else:
+        with open(f"{officer_name} page 1.json") as json_file:
+            officer_data = json.load(json_file)
 
         # Loop through the officer's appointments and print the company name, number, and nature of business
         for current_page in range(0, page_no, 1):
