@@ -9,11 +9,11 @@ load_dotenv()
 
 document = Document()
 
-API_KEY = os.environ("API_KEY")
+API_KEY = os.environ.get("API_KEY")
 
 
-OFFICER_NAME = os.environ("OFFICER_NAME")
-OFFICER_DOB = os.environ("OFFICER_DOB")
+OFFICER_NAME = os.environ.get("OFFICER_NAME")
+OFFICER_DOB = os.environ.get("OFFICER_DOB")
 
 URL = f"https://api.company-information.service.gov.uk/search/officers?q=\"{OFFICER_NAME}\""
 
