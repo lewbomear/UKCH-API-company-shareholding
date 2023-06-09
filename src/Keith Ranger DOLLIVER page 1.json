@@ -1,0 +1,1463 @@
+{
+    "etag": "7b008402135884dad62005d6291dc24f94577ac1",
+    "kind": "personal-appointment",
+    "start_index": 0,
+    "name": "Keith Ranger DOLLIVER",
+    "links": {
+        "self": "/officers/7Ufkr6PdpbhuQdrNCACDGphnb8s/appointments"
+    },
+    "is_corporate_officer": false,
+    "items_per_page": 50,
+    "items": [
+        {
+            "links": {
+                "company": "/company/09971631"
+            },
+            "country_of_residence": "United States",
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER",
+            "appointed_to": {
+                "company_number": "09971631",
+                "company_status": "active",
+                "company_name": "LUMENISITY LIMITED"
+            },
+            "name_elements": {
+                "forename": "Keith",
+                "other_forenames": "Ranger",
+                "surname": "DOLLIVER",
+                "title": "Mr"
+            },
+            "address": {
+                "postal_code": "98052-6399",
+                "premises": "One Microsoft Way",
+                "country": "United States",
+                "region": "Washington",
+                "locality": "Redmond"
+            },
+            "officer_role": "director",
+            "nationality": "American",
+            "appointed_on": "2022-12-09"
+        },
+        {
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney",
+            "links": {
+                "company": "/company/04090152"
+            },
+            "country_of_residence": "United States",
+            "name_elements": {
+                "forename": "Keith",
+                "other_forenames": "Ranger",
+                "title": "Mr",
+                "surname": "DOLLIVER"
+            },
+            "appointed_to": {
+                "company_status": "active",
+                "company_name": "NUANCE COMMUNICATIONS UK LIMITED",
+                "company_number": "04090152"
+            },
+            "officer_role": "director",
+            "address": {
+                "locality": "Redmond",
+                "region": "Washington",
+                "country": "United States",
+                "premises": "One Microsoft Way",
+                "postal_code": "98052-6399"
+            },
+            "appointed_on": "2022-11-09",
+            "nationality": "American"
+        },
+        {
+            "country_of_residence": "United States",
+            "links": {
+                "company": "/company/04825183"
+            },
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney",
+            "appointed_to": {
+                "company_status": "active",
+                "company_name": "NUANCE COMMUNICATIONS LIMITED",
+                "company_number": "04825183"
+            },
+            "name_elements": {
+                "forename": "Keith",
+                "surname": "DOLLIVER",
+                "title": "Mr",
+                "other_forenames": "Ranger"
+            },
+            "officer_role": "director",
+            "address": {
+                "locality": "Redmond",
+                "region": "Washington",
+                "country": "United States",
+                "premises": "One Microsoft Way",
+                "postal_code": "98052-6399"
+            },
+            "appointed_on": "2022-11-09",
+            "nationality": "American"
+        },
+        {
+            "officer_role": "director",
+            "address": {
+                "region": "Washington",
+                "country": "United States",
+                "locality": "Redmond",
+                "postal_code": "98052-6399",
+                "premises": "One Microsoft Way"
+            },
+            "appointed_on": "2022-11-09",
+            "nationality": "American",
+            "links": {
+                "company": "/company/01792924"
+            },
+            "country_of_residence": "United States",
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney",
+            "appointed_to": {
+                "company_number": "01792924",
+                "company_name": "WINSCRIBE EUROPE LIMITED",
+                "company_status": "active"
+            },
+            "name_elements": {
+                "surname": "DOLLIVER",
+                "title": "Mr",
+                "other_forenames": "Ranger",
+                "forename": "Keith"
+            }
+        },
+        {
+            "appointed_on": "2022-06-06",
+            "nationality": "American",
+            "officer_role": "director",
+            "address": {
+                "locality": "Redmond",
+                "country": "United States",
+                "region": "Washington",
+                "premises": "One Microsoft Way",
+                "postal_code": "98052-6399"
+            },
+            "name_elements": {
+                "other_forenames": "Ranger",
+                "surname": "DOLLIVER",
+                "title": "Mr",
+                "forename": "Keith"
+            },
+            "appointed_to": {
+                "company_number": "09230917",
+                "company_name": "APPNEXUS OAS EUROPE LIMITED",
+                "company_status": "active"
+            },
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney",
+            "country_of_residence": "United States",
+            "links": {
+                "company": "/company/09230917"
+            }
+        },
+        {
+            "nationality": "American",
+            "appointed_on": "2022-06-06",
+            "address": {
+                "locality": "Redmond",
+                "country": "United States",
+                "region": "Washington",
+                "premises": "One Microsoft Way",
+                "postal_code": "98052-6399"
+            },
+            "officer_role": "director",
+            "appointed_to": {
+                "company_status": "active",
+                "company_name": "APPNEXUS EUROPE LIMITED",
+                "company_number": "07662658"
+            },
+            "name_elements": {
+                "forename": "Keith",
+                "title": "Mr",
+                "surname": "DOLLIVER",
+                "other_forenames": "Ranger"
+            },
+            "country_of_residence": "United States",
+            "links": {
+                "company": "/company/07662658"
+            },
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney"
+        },
+        {
+            "country_of_residence": "United States",
+            "links": {
+                "company": "/company/11941769"
+            },
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER",
+            "appointed_to": {
+                "company_number": "11941769",
+                "company_name": "MINIT LABS UK LTD",
+                "company_status": "active"
+            },
+            "name_elements": {
+                "other_forenames": "Ranger",
+                "surname": "DOLLIVER",
+                "title": "Mr",
+                "forename": "Keith"
+            },
+            "address": {
+                "premises": "One Microsoft Way",
+                "postal_code": "98052-6399",
+                "locality": "Redmond",
+                "country": "United States",
+                "region": "Washington"
+            },
+            "officer_role": "director",
+            "nationality": "American",
+            "appointed_on": "2022-03-23"
+        },
+        {
+            "appointed_on": "2021-08-18",
+            "nationality": "American",
+            "officer_role": "director",
+            "address": {
+                "premises": "One Microsoft Way",
+                "address_line_1": "Redmond",
+                "locality": "Washington",
+                "region": "98052- 6399",
+                "country": "United States"
+            },
+            "appointed_to": {
+                "company_name": "RISKIQ UK LIMITED",
+                "company_status": "active",
+                "company_number": "09135597"
+            },
+            "name_elements": {
+                "other_forenames": "Ranger",
+                "title": "Mr",
+                "surname": "DOLLIVER",
+                "forename": "Keith"
+            },
+            "links": {
+                "company": "/company/09135597"
+            },
+            "country_of_residence": "United States",
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER"
+        },
+        {
+            "officer_role": "director",
+            "address": {
+                "locality": "Redmond",
+                "region": "Washington",
+                "country": "United States",
+                "premises": "One Microsoft Way",
+                "postal_code": "98052-6399"
+            },
+            "appointed_on": "2021-03-11",
+            "nationality": "American",
+            "country_of_residence": "United States",
+            "links": {
+                "company": "/company/SC568103"
+            },
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER",
+            "appointed_to": {
+                "company_name": "THE MARSDEN GROUP EUROPE LIMITED",
+                "company_status": "active",
+                "company_number": "SC568103"
+            },
+            "name_elements": {
+                "title": "Mr",
+                "surname": "DOLLIVER",
+                "other_forenames": "Ranger",
+                "forename": "Keith"
+            }
+        },
+        {
+            "links": {
+                "company": "/company/06333302"
+            },
+            "country_of_residence": "United States",
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney",
+            "appointed_to": {
+                "company_number": "06333302",
+                "company_name": "BETHESDA SOFTWORKS EUROPE LIMITED",
+                "company_status": "active"
+            },
+            "name_elements": {
+                "other_forenames": "Ranger",
+                "title": "Mr",
+                "surname": "DOLLIVER",
+                "forename": "Keith"
+            },
+            "address": {
+                "country": "United States",
+                "region": "Washington",
+                "locality": "Redmond",
+                "postal_code": "98052-6399",
+                "premises": "One Microsoft Way"
+            },
+            "officer_role": "director",
+            "nationality": "American",
+            "appointed_on": "2021-03-11"
+        },
+        {
+            "name_elements": {
+                "forename": "Keith",
+                "surname": "DOLLIVER",
+                "title": "Mr",
+                "other_forenames": "Ranger"
+            },
+            "appointed_to": {
+                "company_number": "06333300",
+                "company_status": "active",
+                "company_name": "ZENIMAX EUROPE LIMITED"
+            },
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney",
+            "links": {
+                "company": "/company/06333300"
+            },
+            "country_of_residence": "United States",
+            "appointed_on": "2021-03-11",
+            "nationality": "American",
+            "officer_role": "director",
+            "address": {
+                "region": "Washington",
+                "country": "United States",
+                "locality": "Redmond",
+                "postal_code": "98052-6399",
+                "premises": "One Microsoft Way"
+            }
+        },
+        {
+            "name_elements": {
+                "other_forenames": "Ranger",
+                "surname": "DOLLIVER",
+                "title": "Mr",
+                "forename": "Keith"
+            },
+            "appointed_to": {
+                "company_status": "active",
+                "company_name": "METASWITCH NETWORKS LTD",
+                "company_number": "01578918"
+            },
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney",
+            "links": {
+                "company": "/company/01578918"
+            },
+            "country_of_residence": "United States",
+            "appointed_on": "2020-07-14",
+            "nationality": "American",
+            "officer_role": "director",
+            "address": {
+                "address_line_1": "Microsoft Way",
+                "locality": "Redmond",
+                "region": "Wa 98052-6399",
+                "country": "United States",
+                "premises": "One"
+            }
+        },
+        {
+            "appointed_to": {
+                "company_name": "SOMERVILLE ACQUISITION UK LIMITED",
+                "company_status": "active",
+                "company_number": "12729773"
+            },
+            "name_elements": {
+                "other_forenames": "Ranger",
+                "title": "Mr",
+                "surname": "DOLLIVER",
+                "forename": "Keith"
+            },
+            "country_of_residence": "United States",
+            "links": {
+                "company": "/company/12729773"
+            },
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney",
+            "nationality": "American",
+            "appointed_on": "2020-07-08",
+            "address": {
+                "region": "Washington",
+                "country": "United States",
+                "locality": "Redmond",
+                "postal_code": "98052-6399",
+                "premises": "One Microsoft Way"
+            },
+            "officer_role": "director"
+        },
+        {
+            "appointed_to": {
+                "company_number": "11828229",
+                "company_status": "active",
+                "company_name": "CYBERX SECURITY UK LIMITED"
+            },
+            "name_elements": {
+                "surname": "DOLLIVER",
+                "title": "Mr",
+                "other_forenames": "Ranger",
+                "forename": "Keith"
+            },
+            "country_of_residence": "United States",
+            "links": {
+                "company": "/company/11828229"
+            },
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney",
+            "nationality": "American",
+            "appointed_on": "2020-06-19",
+            "address": {
+                "locality": "Redmond",
+                "country": "United States",
+                "region": "Washington",
+                "premises": "One Microsoft Way",
+                "postal_code": "98052-6399"
+            },
+            "officer_role": "director"
+        },
+        {
+            "officer_role": "director",
+            "address": {
+                "locality": "Redmond",
+                "country": "United States",
+                "region": "Washington",
+                "premises": "One Microsoft Way",
+                "postal_code": "98052-6399"
+            },
+            "appointed_on": "2020-05-15",
+            "nationality": "American",
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER",
+            "country_of_residence": "United States",
+            "links": {
+                "company": "/company/09682819"
+            },
+            "name_elements": {
+                "forename": "Keith",
+                "title": "Mr",
+                "surname": "DOLLIVER",
+                "other_forenames": "Ranger"
+            },
+            "appointed_to": {
+                "company_number": "09682819",
+                "company_name": "SOFTOMOTIVE UK LTD",
+                "company_status": "active"
+            }
+        },
+        {
+            "address": {
+                "locality": "Redmond",
+                "region": "Washington",
+                "country": "United States",
+                "premises": "One Microsoft Way",
+                "postal_code": "98052-6399"
+            },
+            "officer_role": "director",
+            "nationality": "American",
+            "appointed_on": "2020-05-15",
+            "links": {
+                "company": "/company/11581914"
+            },
+            "country_of_residence": "United States",
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER",
+            "appointed_to": {
+                "company_name": "SOFTOMOTIVE HOLDING LTD",
+                "company_status": "active",
+                "company_number": "11581914"
+            },
+            "name_elements": {
+                "forename": "Keith",
+                "other_forenames": "Ranger",
+                "surname": "DOLLIVER",
+                "title": "Mr"
+            }
+        },
+        {
+            "name_elements": {
+                "forename": "Keith",
+                "other_forenames": "Ranger",
+                "title": "Mr",
+                "surname": "DOLLIVER"
+            },
+            "appointed_to": {
+                "company_number": "07703538",
+                "company_name": "AFFIRMED NETWORKS UK LIMITED",
+                "company_status": "active"
+            },
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney",
+            "country_of_residence": "United States",
+            "links": {
+                "company": "/company/07703538"
+            },
+            "appointed_on": "2020-04-21",
+            "nationality": "American",
+            "officer_role": "director",
+            "address": {
+                "country": "United States",
+                "region": "Washington",
+                "locality": "Redmond",
+                "postal_code": "98052-6399",
+                "premises": "One Microsoft Way"
+            }
+        },
+        {
+            "appointed_on": "2019-11-23",
+            "nationality": "American",
+            "officer_role": "director",
+            "address": {
+                "premises": "One Microsoft Way",
+                "postal_code": "98052-6399",
+                "locality": "Redmond",
+                "region": "Washington",
+                "country": "United States"
+            },
+            "appointed_to": {
+                "company_name": "GITHUB SOFTWARE UK LTD.",
+                "company_status": "active",
+                "company_number": "06037169"
+            },
+            "name_elements": {
+                "surname": "DOLLIVER",
+                "title": "Mr",
+                "other_forenames": "Ranger",
+                "forename": "Keith"
+            },
+            "country_of_residence": "United States",
+            "links": {
+                "company": "/company/06037169"
+            },
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER"
+        },
+        {
+            "appointed_to": {
+                "company_status": "converted-closed",
+                "company_name": "MOVERE, INC.",
+                "company_number": "FC030907"
+            },
+            "name_elements": {
+                "other_forenames": "Ranger",
+                "title": "Mr",
+                "surname": "DOLLIVER",
+                "forename": "Keith"
+            },
+            "links": {
+                "company": "/company/FC030907"
+            },
+            "country_of_residence": "United States",
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER",
+            "nationality": "American",
+            "appointed_on": "2019-08-29",
+            "address": {
+                "address_line_2": "Redmond",
+                "premises": "One",
+                "locality": "Washington",
+                "address_line_1": "Microsoft Way",
+                "country": "United States",
+                "region": "98052-8300"
+            },
+            "officer_role": "director"
+        },
+        {
+            "officer_role": "director",
+            "address": {
+                "premises": "One Microsoft Way",
+                "postal_code": "98052-6399",
+                "locality": "Redmond",
+                "country": "United States",
+                "region": "Washington"
+            },
+            "appointed_on": "2019-08-19",
+            "nationality": "American",
+            "links": {
+                "company": "/company/07993926"
+            },
+            "country_of_residence": "United States",
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney",
+            "appointed_to": {
+                "company_name": "JCLARITY LIMITED",
+                "company_status": "active",
+                "company_number": "07993926"
+            },
+            "name_elements": {
+                "forename": "Keith",
+                "other_forenames": "Ranger",
+                "surname": "DOLLIVER",
+                "title": "Mr"
+            }
+        },
+        {
+            "officer_role": "director",
+            "address": {
+                "postal_code": "98052-6399",
+                "premises": "One Microsoft Way",
+                "country": "United States",
+                "region": "Washington",
+                "locality": "Redmond"
+            },
+            "appointed_on": "2019-04-05",
+            "nationality": "American",
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney",
+            "country_of_residence": "United States",
+            "links": {
+                "company": "/company/10714639"
+            },
+            "name_elements": {
+                "forename": "Keith",
+                "other_forenames": "Ranger",
+                "title": "Mr",
+                "surname": "DOLLIVER"
+            },
+            "appointed_to": {
+                "company_number": "10714639",
+                "company_status": "dissolved",
+                "company_name": "DEPENDABOT LTD"
+            }
+        },
+        {
+            "links": {
+                "company": "/company/05240956"
+            },
+            "country_of_residence": "United States",
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney",
+            "appointed_to": {
+                "company_number": "05240956",
+                "company_name": "NINJA THEORY LIMITED",
+                "company_status": "active"
+            },
+            "name_elements": {
+                "forename": "Keith",
+                "surname": "DOLLIVER",
+                "title": "Mr",
+                "other_forenames": "Ranger"
+            },
+            "officer_role": "director",
+            "address": {
+                "locality": "Redmond",
+                "country": "United States",
+                "region": "Washington",
+                "premises": "One Microsoft Way",
+                "postal_code": "98052-6399"
+            },
+            "appointed_on": "2018-08-31",
+            "nationality": "American"
+        },
+        {
+            "appointed_on": "2018-05-30",
+            "nationality": "American",
+            "officer_role": "director",
+            "address": {
+                "locality": "Redmond",
+                "country": "United States",
+                "region": "Washington",
+                "premises": "One Microsoft Way",
+                "postal_code": "98052-6399"
+            },
+            "appointed_to": {
+                "company_number": "08847652",
+                "company_name": "PLAYGROUND MOBILE LIMITED",
+                "company_status": "active"
+            },
+            "name_elements": {
+                "forename": "Keith",
+                "other_forenames": "Ranger",
+                "title": "Mr",
+                "surname": "DOLLIVER"
+            },
+            "country_of_residence": "United States",
+            "links": {
+                "company": "/company/08847652"
+            },
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney"
+        },
+        {
+            "nationality": "American",
+            "appointed_on": "2018-05-30",
+            "address": {
+                "premises": "One Microsoft Way",
+                "postal_code": "98052-6399",
+                "locality": "Redmond",
+                "country": "United States",
+                "region": "Washington"
+            },
+            "officer_role": "director",
+            "appointed_to": {
+                "company_name": "PLAYGROUND GAMES HOLDINGS LIMITED",
+                "company_status": "active",
+                "company_number": "08848868"
+            },
+            "name_elements": {
+                "title": "Mr",
+                "surname": "DOLLIVER",
+                "other_forenames": "Ranger",
+                "forename": "Keith"
+            },
+            "links": {
+                "company": "/company/08848868"
+            },
+            "country_of_residence": "United States",
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney"
+        },
+        {
+            "appointed_on": "2018-05-30",
+            "nationality": "American",
+            "officer_role": "director",
+            "address": {
+                "region": "Washington",
+                "country": "United States",
+                "locality": "Redmond",
+                "postal_code": "98052-6399",
+                "premises": "One Microsoft Way"
+            },
+            "appointed_to": {
+                "company_status": "active",
+                "company_name": "PG GAME DEVELOPMENT LIMITED",
+                "company_number": "09487648"
+            },
+            "name_elements": {
+                "surname": "DOLLIVER",
+                "title": "Mr",
+                "other_forenames": "Ranger",
+                "forename": "Keith"
+            },
+            "links": {
+                "company": "/company/09487648"
+            },
+            "country_of_residence": "United States",
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER"
+        },
+        {
+            "address": {
+                "region": "Washington 98052-6399",
+                "country": "United States",
+                "locality": "Washington",
+                "address_line_1": "Microsoft Way",
+                "premises": "1",
+                "address_line_2": "Redmond"
+            },
+            "officer_role": "director",
+            "nationality": "American",
+            "appointed_on": "2018-05-29",
+            "country_of_residence": "United States",
+            "links": {
+                "company": "/company/07057499"
+            },
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Director",
+            "appointed_to": {
+                "company_number": "07057499",
+                "company_name": "PLAYGROUND GAMES LIMITED",
+                "company_status": "active"
+            },
+            "name_elements": {
+                "other_forenames": "Ranger",
+                "surname": "DOLLIVER",
+                "title": "Mr",
+                "forename": "Keith"
+            }
+        },
+        {
+            "appointed_to": {
+                "company_status": "dissolved",
+                "company_name": "SECURE ISLANDS TECHNOLOGIES (UK) LTD",
+                "company_number": "09455701"
+            },
+            "name_elements": {
+                "forename": "Keith",
+                "other_forenames": "Ranger",
+                "surname": "DOLLIVER",
+                "title": "Mr"
+            },
+            "links": {
+                "company": "/company/09455701"
+            },
+            "country_of_residence": "United States",
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER",
+            "nationality": "American",
+            "appointed_on": "2017-03-14",
+            "address": {
+                "region": "Washington",
+                "country": "United States",
+                "locality": "Redmond",
+                "postal_code": "98052-6399",
+                "premises": "One Microsoft Way"
+            },
+            "officer_role": "director"
+        },
+        {
+            "nationality": "American",
+            "appointed_on": "2016-04-14",
+            "address": {
+                "premises": "One Microsoft Way",
+                "postal_code": "98052-6399",
+                "locality": "Redmond",
+                "country": "United States",
+                "region": "Washington"
+            },
+            "officer_role": "director",
+            "appointed_to": {
+                "company_number": "08906384",
+                "company_status": "dissolved",
+                "company_name": "XAMARIN LIMITED"
+            },
+            "name_elements": {
+                "forename": "Keith",
+                "other_forenames": "Ranger",
+                "title": "Mr",
+                "surname": "DOLLIVER"
+            },
+            "country_of_residence": "United States",
+            "links": {
+                "company": "/company/08906384"
+            },
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER"
+        },
+        {
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER",
+            "country_of_residence": "United States",
+            "links": {
+                "company": "/company/07772064"
+            },
+            "name_elements": {
+                "title": "Mr",
+                "surname": "DOLLIVER",
+                "other_forenames": "Ranger",
+                "forename": "Keith"
+            },
+            "appointed_to": {
+                "company_name": "TOUCHTYPE MOBILE LIMITED",
+                "company_status": "active",
+                "company_number": "07772064"
+            },
+            "address": {
+                "premises": "One",
+                "address_line_2": "Redmond",
+                "locality": "Washington",
+                "address_line_1": "Microsoft Way",
+                "region": "98052-6399",
+                "country": "United States"
+            },
+            "officer_role": "director",
+            "nationality": "American",
+            "appointed_on": "2016-03-01"
+        },
+        {
+            "officer_role": "director",
+            "address": {
+                "address_line_2": "Redmond",
+                "premises": "One",
+                "locality": "Washington",
+                "address_line_1": "Microsoft Way",
+                "region": "98052-6399",
+                "country": "Usa"
+            },
+            "appointed_on": "2016-03-01",
+            "nationality": "American",
+            "links": {
+                "company": "/company/08168240"
+            },
+            "country_of_residence": "United States",
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER",
+            "appointed_to": {
+                "company_status": "dissolved",
+                "company_name": "FLUENCY MEANING LIMITED",
+                "company_number": "08168240"
+            },
+            "name_elements": {
+                "title": "Mr",
+                "surname": "DOLLIVER",
+                "other_forenames": "Ranger",
+                "forename": "Keith"
+            }
+        },
+        {
+            "name_elements": {
+                "forename": "Keith",
+                "title": "Mr",
+                "surname": "DOLLIVER",
+                "other_forenames": "Ranger"
+            },
+            "appointed_to": {
+                "company_number": "06671487",
+                "company_name": "TOUCHTYPE LIMITED",
+                "company_status": "active"
+            },
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney",
+            "links": {
+                "company": "/company/06671487"
+            },
+            "country_of_residence": "United States",
+            "appointed_on": "2016-03-01",
+            "nationality": "American",
+            "officer_role": "director",
+            "address": {
+                "premises": "One",
+                "address_line_2": "Redmond",
+                "address_line_1": "Microsoft Way",
+                "locality": "Washington",
+                "region": "98052-6399",
+                "country": "United States"
+            }
+        },
+        {
+            "appointed_on": "2015-10-28",
+            "nationality": "American",
+            "officer_role": "director",
+            "address": {
+                "region": "Washington",
+                "country": "United States",
+                "locality": "Redmond",
+                "postal_code": "98052-6399",
+                "premises": "One Microsoft Way"
+            },
+            "appointed_to": {
+                "company_name": "HAVOK TRL (GB) LTD",
+                "company_status": "dissolved",
+                "company_number": "07571825"
+            },
+            "name_elements": {
+                "surname": "DOLLIVER",
+                "title": "Mr",
+                "other_forenames": "Ranger",
+                "forename": "Keith"
+            },
+            "links": {
+                "company": "/company/07571825"
+            },
+            "country_of_residence": "United States",
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney"
+        },
+        {
+            "links": {
+                "company": "/company/09616816"
+            },
+            "country_of_residence": "United States",
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney",
+            "appointed_to": {
+                "company_number": "09616816",
+                "company_status": "active",
+                "company_name": "MSFT MCIO LIMITED"
+            },
+            "name_elements": {
+                "forename": "Keith",
+                "title": "Mr",
+                "surname": "DOLLIVER",
+                "other_forenames": "Ranger"
+            },
+            "address": {
+                "locality": "Redmond",
+                "region": "Washington",
+                "country": "United States",
+                "premises": "One Microsoft Way",
+                "postal_code": "98052-6399"
+            },
+            "officer_role": "director",
+            "nationality": "American",
+            "appointed_on": "2015-06-01"
+        },
+        {
+            "name_elements": {
+                "forename": "Keith",
+                "other_forenames": "Ranger",
+                "surname": "DOLLIVER",
+                "title": "Mr"
+            },
+            "appointed_to": {
+                "company_status": "dissolved",
+                "company_name": "REVOLUTION ANALYTICS LIMITED",
+                "company_number": "08398001"
+            },
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER",
+            "links": {
+                "company": "/company/08398001"
+            },
+            "country_of_residence": "United States",
+            "nationality": "American",
+            "appointed_on": "2015-04-03",
+            "address": {
+                "postal_code": "98052-6399",
+                "premises": "One Microsoft Way",
+                "region": "Washington",
+                "country": "United States",
+                "locality": "Redmond"
+            },
+            "officer_role": "director"
+        },
+        {
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney",
+            "links": {
+                "company": "/company/02212202"
+            },
+            "country_of_residence": "United States",
+            "name_elements": {
+                "forename": "Keith",
+                "title": "Mr",
+                "surname": "DOLLIVER",
+                "other_forenames": "Ranger"
+            },
+            "appointed_to": {
+                "company_number": "02212202",
+                "company_status": "dissolved",
+                "company_name": "MICROSOFT MOBILE UK LIMITED"
+            },
+            "officer_role": "director",
+            "address": {
+                "locality": "Redmond",
+                "country": "United States",
+                "region": "Washington",
+                "premises": "One Microsoft Way",
+                "postal_code": "98052-6399"
+            },
+            "appointed_on": "2014-04-25",
+            "nationality": "American"
+        },
+        {
+            "appointed_to": {
+                "company_name": "MICROSOFT MOBILE UK HOLDINGS LIMITED",
+                "company_status": "dissolved",
+                "company_number": "01500669"
+            },
+            "name_elements": {
+                "forename": "Keith",
+                "other_forenames": "Ranger",
+                "title": "Mr",
+                "surname": "DOLLIVER"
+            },
+            "country_of_residence": "United States",
+            "links": {
+                "company": "/company/01500669"
+            },
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney",
+            "appointed_on": "2014-04-25",
+            "nationality": "American",
+            "officer_role": "director",
+            "address": {
+                "country": "United States",
+                "region": "Washington",
+                "locality": "Redmond",
+                "postal_code": "98052-6399",
+                "premises": "One Microsoft Way"
+            }
+        },
+        {
+            "appointed_to": {
+                "company_status": "dissolved",
+                "company_name": "MISKISHO LTD",
+                "company_number": "06531841"
+            },
+            "name_elements": {
+                "other_forenames": "Ranger",
+                "title": "Mr",
+                "surname": "DOLLIVER",
+                "forename": "Keith"
+            },
+            "country_of_residence": "United States",
+            "links": {
+                "company": "/company/06531841"
+            },
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER",
+            "nationality": "American",
+            "appointed_on": "2014-02-06",
+            "address": {
+                "postal_code": "98052-6399",
+                "premises": "One Microsoft Way",
+                "country": "Usa",
+                "region": "Washington",
+                "locality": "Redmond"
+            },
+            "officer_role": "director"
+        },
+        {
+            "name_elements": {
+                "forename": "Keith",
+                "other_forenames": "Ranger",
+                "surname": "DOLLIVER",
+                "title": "Mr"
+            },
+            "appointed_to": {
+                "company_name": "CAT AND MOUSE LIMITED",
+                "company_status": "dissolved",
+                "company_number": "04661658"
+            },
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER",
+            "links": {
+                "company": "/company/04661658"
+            },
+            "country_of_residence": "United States",
+            "appointed_on": "2013-11-08",
+            "nationality": "American",
+            "officer_role": "director",
+            "address": {
+                "country": "Usa",
+                "region": "Washington 98052-6399",
+                "locality": "Redmond",
+                "address_line_1": "Microsoft Way",
+                "premises": "One"
+            }
+        },
+        {
+            "appointed_to": {
+                "company_status": "dissolved",
+                "company_name": "YAMMER EUROPE LIMITED",
+                "company_number": "07406707"
+            },
+            "name_elements": {
+                "other_forenames": "Ranger",
+                "title": "Mr",
+                "surname": "DOLLIVER",
+                "forename": "Keith"
+            },
+            "links": {
+                "company": "/company/07406707"
+            },
+            "country_of_residence": "United States",
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER",
+            "nationality": "American",
+            "appointed_on": "2012-09-21",
+            "address": {
+                "premises": "One Microsoft Way",
+                "postal_code": "98052-6399",
+                "locality": "Redmond",
+                "region": "Washington",
+                "country": "Usa"
+            },
+            "officer_role": "director"
+        },
+        {
+            "country_of_residence": "United States",
+            "links": {
+                "company": "/company/06551724"
+            },
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney",
+            "appointed_to": {
+                "company_name": "QUOLOS LIMITED",
+                "company_status": "dissolved",
+                "company_number": "06551724"
+            },
+            "name_elements": {
+                "forename": "Keith",
+                "other_forenames": "Ranger",
+                "surname": "DOLLIVER",
+                "title": "Mr"
+            },
+            "address": {
+                "postal_code": "98052-6399",
+                "premises": "One Microsoft Way",
+                "country": "Usa",
+                "region": "Washington",
+                "locality": "Redmond"
+            },
+            "officer_role": "director",
+            "nationality": "American",
+            "appointed_on": "2012-09-21"
+        },
+        {
+            "address": {
+                "country": "Usa",
+                "region": "Washington",
+                "address_line_1": "Se 44th Court",
+                "locality": "Issaquah",
+                "postal_code": "98029",
+                "premises": "24615"
+            },
+            "officer_role": "director",
+            "nationality": "American",
+            "appointed_on": "2012-03-20",
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER",
+            "country_of_residence": "United States",
+            "links": {
+                "company": "/company/07998035"
+            },
+            "name_elements": {
+                "forename": "Keith",
+                "surname": "DOLLIVER",
+                "title": "Mr",
+                "other_forenames": "Ranger"
+            },
+            "appointed_to": {
+                "company_name": "MICROSOFT RETAIL STORE - UNITED KINGDOM LIMITED",
+                "company_status": "dissolved",
+                "company_number": "07998035"
+            }
+        },
+        {
+            "name_elements": {
+                "other_forenames": "Ranger",
+                "surname": "DOLLIVER",
+                "title": "Mr",
+                "forename": "Keith"
+            },
+            "appointed_to": {
+                "company_status": "active",
+                "company_name": "S TECHNOLOGIES LIMITED",
+                "company_number": "05012699"
+            },
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER",
+            "links": {
+                "company": "/company/05012699"
+            },
+            "country_of_residence": "United States",
+            "appointed_on": "2011-12-29",
+            "nationality": "American",
+            "officer_role": "director",
+            "address": {
+                "region": "Washington",
+                "country": "United States",
+                "locality": "Redmond",
+                "postal_code": "98052-6399",
+                "premises": "One Microsoft Way"
+            }
+        },
+        {
+            "nationality": "American",
+            "appointed_on": "2011-12-29",
+            "address": {
+                "country": "Usa",
+                "region": "Washington",
+                "locality": "Redmond",
+                "postal_code": "98052-6399",
+                "premises": "One Microsoft Way"
+            },
+            "officer_role": "director",
+            "name_elements": {
+                "surname": "DOLLIVER",
+                "title": "Mr",
+                "other_forenames": "Ranger",
+                "forename": "Keith"
+            },
+            "appointed_to": {
+                "company_name": "SKYPE LIMITED",
+                "company_status": "dissolved",
+                "company_number": "06315651"
+            },
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER",
+            "country_of_residence": "United States",
+            "links": {
+                "company": "/company/06315651"
+            }
+        },
+        {
+            "nationality": "American",
+            "appointed_on": "2011-06-06",
+            "address": {
+                "premises": "One Microsoft Way",
+                "postal_code": "98052-6399",
+                "locality": "Redmond",
+                "region": "Washington",
+                "country": "Usa"
+            },
+            "officer_role": "director",
+            "name_elements": {
+                "forename": "Keith",
+                "surname": "DOLLIVER",
+                "title": "Mr",
+                "other_forenames": "Ranger"
+            },
+            "appointed_to": {
+                "company_status": "dissolved",
+                "company_name": "PRODIANCE LIMITED",
+                "company_number": "06857431"
+            },
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney",
+            "country_of_residence": "United States",
+            "links": {
+                "company": "/company/06857431"
+            }
+        },
+        {
+            "appointed_to": {
+                "company_number": "05804315",
+                "company_name": "SENTILLION LIMITED",
+                "company_status": "dissolved"
+            },
+            "name_elements": {
+                "surname": "DOLLIVER",
+                "other_forenames": "Ranger",
+                "forename": "Keith"
+            },
+            "country_of_residence": "U.S.A.",
+            "links": {
+                "company": "/company/05804315"
+            },
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER",
+            "appointed_on": "2010-02-01",
+            "nationality": "American",
+            "officer_role": "director",
+            "address": {
+                "region": "Washington 98006",
+                "country": "United States Of America",
+                "locality": "Bellevue",
+                "address_line_1": "179th Avenue Se",
+                "premises": "5580"
+            }
+        },
+        {
+            "address": {
+                "region": "Washington 98006",
+                "address_line_1": "179th Avenue Se",
+                "locality": "Bellevue",
+                "premises": "5580"
+            },
+            "officer_role": "director",
+            "nationality": "American",
+            "appointed_on": "2009-12-10",
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney",
+            "country_of_residence": "U.S.A.",
+            "links": {
+                "company": "/company/05831987"
+            },
+            "name_elements": {
+                "surname": "DOLLIVER",
+                "other_forenames": "Ranger",
+                "forename": "Keith"
+            },
+            "appointed_to": {
+                "company_number": "05831987",
+                "company_status": "dissolved",
+                "company_name": "OPALIS SOFTWARE UK LIMITED"
+            }
+        },
+        {
+            "name_elements": {
+                "forename": "Keith",
+                "other_forenames": "Ranger",
+                "surname": "DOLLIVER"
+            },
+            "appointed_to": {
+                "company_name": "FAST SEARCH & TRANSFER LIMITED",
+                "company_status": "dissolved",
+                "company_number": "04048174"
+            },
+            "name": "Keith Ranger DOLLIVER",
+            "occupation": "Attorney",
+            "links": {
+                "company": "/company/04048174"
+            },
+            "country_of_residence": "U.S.A.",
+            "nationality": "American",
+            "appointed_on": "2008-10-09",
+            "address": {
+                "region": "Washington 98006",
+                "country": "U.S.A",
+                "address_line_1": "5580 179th Avenue S.E",
+                "locality": "Bellevue"
+            },
+            "officer_role": "director"
+        },
+        {
+            "nationality": "American",
+            "appointed_on": "2008-10-09",
+            "address": {
+                "locality": "Bellevue",
+                "address_line_1": "5580 179th Avenue S.E",
+                "region": "Washington 98006",
+                "country": "U.S.A"
+            },
+            "officer_role": "director",
+            "name_elements": {
+                "other_forenames": "Ranger",
+                "surname": "DOLLIVER",
+                "forename": "Keith"
+            },
+            "appointed_to": {
+                "company_status": "dissolved",
+                "company_name": "FAST SEARCH UK LIMITED",
+                "company_number": "04094069"
+            },
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER",
+            "links": {
+                "company": "/company/04094069"
+            },
+            "country_of_residence": "U.S.A."
+        },
+        {
+            "officer_role": "director",
+            "address": {
+                "country": "U.S.A",
+                "region": "Washington 98006",
+                "address_line_1": "5580 179th Avenue S.E",
+                "locality": "Bellevue"
+            },
+            "appointed_on": "2008-02-28",
+            "nationality": "American",
+            "country_of_residence": "U.S.A.",
+            "links": {
+                "company": "/company/04236464"
+            },
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER",
+            "appointed_to": {
+                "company_number": "04236464",
+                "company_status": "dissolved",
+                "company_name": "DRIVEPM (EUROPE) LIMITED"
+            },
+            "name_elements": {
+                "other_forenames": "Ranger",
+                "surname": "DOLLIVER",
+                "forename": "Keith"
+            }
+        },
+        {
+            "name_elements": {
+                "other_forenames": "Ranger",
+                "surname": "DOLLIVER",
+                "forename": "Keith"
+            },
+            "appointed_to": {
+                "company_name": "ATLAS EUROPE LIMITED",
+                "company_status": "dissolved",
+                "company_number": "04584603"
+            },
+            "occupation": "Attorney",
+            "name": "Keith Ranger DOLLIVER",
+            "links": {
+                "company": "/company/04584603"
+            },
+            "country_of_residence": "U.S.A.",
+            "nationality": "American",
+            "appointed_on": "2008-02-28",
+            "address": {
+                "region": "Washington 98006",
+                "country": "U.S.A",
+                "address_line_1": "5580 179th Avenue S.E",
+                "locality": "Bellevue"
+            },
+            "officer_role": "director"
+        }
+    ],
+    "date_of_birth": {
+        "month": 1,
+        "year": 1963
+    },
+    "total_results": 65
+}

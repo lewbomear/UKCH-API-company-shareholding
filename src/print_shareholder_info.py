@@ -14,35 +14,35 @@ def print_shareholder_info():
     load_dotenv()
 
     # Insert API key
-    api_key = os.environ.get("COMPANY_HOUSE_API_KEY")
+    API_KEY = os.environ.get("COMPANY_HOUSE_API_KEY")
 
     # Insert company number to retrieve its confirmation statement
-    company_number = os.environ.get("COMPANY_NO")
+    COMPANY_NUMBER = os.environ.get("COMPANY_NO")
 
     # Make a filing history request to get all confirmation statements
-    url = f"https://api.company-information.service.gov.uk/company/{company_number}/filing-history?category=confirmation-statement&items_per_page=100"
+    URL = f"https://api.company-information.service.gov.uk/company/{COMPANY_NUMBER}/filing-history?category=confirmation-statement&items_per_page=100"
 
-    response = requests.get(url, auth=(api_key, ""))
+    RESPONSE = requests.get(URL, auth=(API_KEY, ""))
 
     # Parse the response for the link to the document metadata
-    response_json = response.json()
-    items = response_json["items"]
+    response_json = RESPONSE.json()
+    ITEMS = response_json["items"]
 
     # Check each confirmation statement to only select the latest confirmation statement with updates
-    for item in items:
+    for item in ITEMS:
         description = item["description"]
         if "confirmation-statement-with-updates" in description.lower():
             metadata_link = item["links"]["document_metadata"]
             metadata_response = requests.get(
                 metadata_link,
-                auth=(api_key, ""),
+                auth=(API_KEY, ""),
                 headers={"Accept": "application/json"},
             )
             metadata_response_json = metadata_response.json()
             document_link = metadata_response_json["links"]["document"]
 
             # Get the content of the document
-            document_response = requests.get(document_link, auth=(api_key, ""))
+            document_response = requests.get(document_link, auth=(API_KEY, ""))
             document_content = document_response.content
 
             # Write the content to a file named "confirmation_statement.pdf"
