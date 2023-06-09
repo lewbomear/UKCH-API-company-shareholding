@@ -43,8 +43,14 @@ for item in data['items']:
 
 exact_name_dob_matches = []
 for item in data['items']:
-    if item['title'].lower() == OFFICER_NAME.lower() and isinstance(item.get('date_of_birth'), dict) and str(item['date_of_birth']['year'])+'-'+str(item['date_of_birth']['month']).zfill(2) == OFFICER_DOB[:7]:
-        exact_name_dob_matches.append(item)
+    if (
+        item['title'].lower() == OFFICER_NAME.lower() #if name matches
+        and isinstance(item.get('date_of_birth'), dict) #and there's a date of birth
+        and str(item['date_of_birth']['year']) #and that dob formatted is equal to the officer's
+        +'-'+str(item['date_of_birth']['month']).zfill(2) 
+        == OFFICER_DOB[:7]
+    ):
+        exact_name_dob_matches.append(item) #add to the list
 
 # Loop through the exact name matches and make a request to each URL in the links dictionary
 for match in exact_name_dob_matches:
