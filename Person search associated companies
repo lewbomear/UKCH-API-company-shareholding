@@ -2,23 +2,21 @@ from docx import Document
 import requests
 import csv
 import json
+from dotenv import load_dotenv
 
+load_dotenv()
 
 document = Document()
 
-
-
-api_key = "APIKEY"
+API_KEY = "APIKEY"
 
 
 officer_name = "XXXX"
 officer_dob = "1970-04"
 
-
 url = f"https://api.company-information.service.gov.uk/search/officers?q=\"{officer_name}\""
 
-
-headers = {"Authorization": api_key}
+headers = {"Authorization": API_KEY}
 
 # Add a title to the document
 document.add_heading(f"Associated companies for: {officer_name}", level=1)
