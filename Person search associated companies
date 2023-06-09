@@ -2,24 +2,25 @@ from docx import Document
 import requests
 import csv
 import json
+import os
 from dotenv import load_dotenv
 
 load_dotenv()
 
 document = Document()
 
-API_KEY = "APIKEY"
+API_KEY = os.environ("API_KEY")
 
 
-officer_name = "XXXX"
-officer_dob = "1970-04"
+OFFICER_NAME = os.environ("OFFICER_NAME")
+OFFICER_DOB = os.environ("OFFICER_DOB")
 
-url = f"https://api.company-information.service.gov.uk/search/officers?q=\"{officer_name}\""
+URL = f"https://api.company-information.service.gov.uk/search/officers?q=\"{OFFICER_NAME}\""
 
 headers = {"Authorization": API_KEY}
 
 # Add a title to the document
-document.add_heading(f"Associated companies for: {officer_name}", level=1)
+document.add_heading(f"Associated companies for: {OFFICER_NAME}", level=1)
 current_heading = document.add_heading('Current appointments', level=1)
 current_end = document.add_paragraph('-')
 former_heading = document.add_heading('Former appointments', level=1)
@@ -31,18 +32,18 @@ with open("SIC07_CH_condensed_list_en.csv", newline='') as csvfile:
     sic_mapping = {row[0]: row[1] for row in sic_codes_reader}
 
 # Make the API request
-response = requests.get(url, headers=headers)
+response = requests.get(URL, headers=headers)
 data = response.json()
 
 # only keep officers with exact name match
 exact_name_matches = []
 for item in data['items']:
-    if item['title'].lower() == officer_name.lower():
+    if item['title'].lower() == OFFICER_NAME.lower():
         exact_name_matches.append(item)
 
 exact_name_dob_matches = []
 for item in data['items']:
-    if item['title'].lower() == officer_name.lower() and isinstance(item.get('date_of_birth'), dict) and str(item['date_of_birth']['year'])+'-'+str(item['date_of_birth']['month']).zfill(2) == officer_dob[:7]:
+    if item['title'].lower() == OFFICER_NAME.lower() and isinstance(item.get('date_of_birth'), dict) and str(item['date_of_birth']['year'])+'-'+str(item['date_of_birth']['month']).zfill(2) == OFFICER_DOB[:7]:
         exact_name_dob_matches.append(item)
 
 # Loop through the exact name matches and make a request to each URL in the links dictionary
@@ -103,7 +104,7 @@ for match in exact_name_dob_matches:
                 for psc_name in psc_names:
                     psc_statement = f"The company has a person with significant control named {psc_name}."
                 new_paragraph = former_end.insert_paragraph_before(
-                    f"{company_name} ({company_number}) \n{officer_name} was appointed {officer_role} of {company_name} ({company_number}) on {appointed_on} and resigned on {resigned_on}. The nature of business is {activity}. {psc_statement}")
+                    f"{company_name} ({company_number}) \n{OFFICER_NAME} was appointed {officer_role} of {company_name} ({company_number}) on {appointed_on} and resigned on {resigned_on}. The nature of business is {activity}. {psc_statement}")
 
 
             elif len(psc_names) > 1:
@@ -111,7 +112,7 @@ for match in exact_name_dob_matches:
                 full_list = ", ".join(psc_names)
                 psc_statement = f"The company has the following persons with significant control: {full_list} and {last_name}."
                 new_paragraph = former_end.insert_paragraph_before(
-                    f"{company_name} ({company_number}) \n{officer_name} was appointed {officer_role} of {company_name} ({company_number}) on {appointed_on} and resigned on {resigned_on}. The nature of business is {activity}. {psc_statement}")
+                    f"{company_name} ({company_number}) \n{OFFICER_NAME} was appointed {officer_role} of {company_name} ({company_number}) on {appointed_on} and resigned on {resigned_on}. The nature of business is {activity}. {psc_statement}")
 
 
             else:
@@ -119,7 +120,7 @@ for match in exact_name_dob_matches:
                     "The company has no persons with significant control"
                 )
                 new_paragraph = former_end.insert_paragraph_before(
-                    f"{company_name} ({company_number}) \n{officer_name} was appointed {officer_role} of {company_name} on {appointed_on} and resigned on {resigned_on}. The nature of business is {activity}. {psc_statement}")
+                    f"{company_name} ({company_number}) \n{OFFICER_NAME} was appointed {officer_role} of {company_name} on {appointed_on} and resigned on {resigned_on}. The nature of business is {activity}. {psc_statement}")
 
         else:
             if len(psc_names) == 1:
@@ -127,11 +128,11 @@ for match in exact_name_dob_matches:
                     psc_statement = f"The company has a person with significant control named {psc_name}."
                     if 'active' in company_status:
                         new_paragraph = current_end.insert_paragraph_before(
-                    f"{company_name} ({company_number}) \n{officer_name} has been serving as {officer_role} of {company_name} since {appointed_on}. The nature of business is {activity}. {psc_statement}"
+                    f"{company_name} ({company_number}) \n{OFFICER_NAME} has been serving as {officer_role} of {company_name} since {appointed_on}. The nature of business is {activity}. {psc_statement}"
                 )
                     else:
                         new_paragraph = former_end.insert_paragraph_before(
-                            f"{company_name} ({company_number}) \n{officer_name} served as {officer_role} of {company_name} between {appointed_on} and {company_dis}. The nature of business was {activity}. {psc_statement}"
+                            f"{company_name} ({company_number}) \n{OFFICER_NAME} served as {officer_role} of {company_name} between {appointed_on} and {company_dis}. The nature of business was {activity}. {psc_statement}"
                         )
             elif len(psc_names) > 1:
                 last_name = psc_names.pop()
@@ -139,11 +140,11 @@ for match in exact_name_dob_matches:
                 psc_statement = f"The company has the following persons with significant control: {full_list} and {last_name}."
                 if 'active' in company_status:
                     new_paragraph = current_end.insert_paragraph_before(
-                    f"{company_name} ({company_number}) \n{officer_name} has been serving as {officer_role} of {company_name} since {appointed_on}. The nature of business is {activity}. {psc_statement}"
+                    f"{company_name} ({company_number}) \n{OFFICER_NAME} has been serving as {officer_role} of {company_name} since {appointed_on}. The nature of business is {activity}. {psc_statement}"
                 )
                 else:
                     new_paragraph = former_end.insert_paragraph_before(
-                    f"{company_name} ({company_number}) \n{officer_name} served as {officer_role} of {company_name} between {appointed_on} and {company_dis}. The nature of business is {activity}. {psc_statement}"
+                    f"{company_name} ({company_number}) \n{OFFICER_NAME} served as {officer_role} of {company_name} between {appointed_on} and {company_dis}. The nature of business is {activity}. {psc_statement}"
                     )
 
             else:
@@ -152,11 +153,11 @@ for match in exact_name_dob_matches:
                 )
                 if 'active' in company_status:
                     new_paragraph = current_end.insert_paragraph_before(
-                    f"{company_name} ({company_number}) \n{officer_name} has been serving as {officer_role} of {company_name} since {appointed_on}. The nature of business is {activity}. {psc_statement}"
+                    f"{company_name} ({company_number}) \n{OFFICER_NAME} has been serving as {officer_role} of {company_name} since {appointed_on}. The nature of business is {activity}. {psc_statement}"
                 )
                 else:
                     new_paragraph = former_end.insert_paragraph_before(
-                    f"{company_name} ({company_number}) \n{officer_name} served as {officer_role} of {company_name} between {appointed_on} and {company_dis}. The nature of business was {activity}. {psc_statement}"
+                    f"{company_name} ({company_number}) \n{OFFICER_NAME} served as {officer_role} of {company_name} between {appointed_on} and {company_dis}. The nature of business was {activity}. {psc_statement}"
                     )
 # Save the document as a Word file
-document.save(f'Associated companies for {officer_name}.docx')
+document.save(f'Associated companies for {OFFICER_NAME}.docx')
