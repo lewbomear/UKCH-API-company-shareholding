@@ -161,7 +161,7 @@ def generate_relevant_individual_info():
                         for psc_name in psc_names:
                             psc_statement = f"The company has a person with significant control named {psc_name}."
                         new_paragraph = former_end.insert_paragraph_before(
-                            f"{company_name} ({company_number}) \n{OFFICER_NAME} was appointed {officer_role} of {company_name} ({company_number}) on {appointed_on} and resigned on {resigned_on}. The nature of business is {activity}. {psc_statement}"
+                            f"{company_name} ({company_number}) \n\n{OFFICER_NAME} was appointed {officer_role} of {company_name} on {appointed_on} and resigned on {resigned_on}. The nature of business is {activity}. {psc_statement} \n"
                         )
 
                     elif len(psc_names) > 1:
@@ -169,15 +169,15 @@ def generate_relevant_individual_info():
                         full_list = ", ".join(psc_names)
                         psc_statement = f"The company has the following persons with significant control: {full_list} and {last_name}."
                         new_paragraph = former_end.insert_paragraph_before(
-                            f"{company_name} ({company_number}) \n{OFFICER_NAME} was appointed {officer_role} of {company_name} ({company_number}) on {appointed_on} and resigned on {resigned_on}. The nature of business is {activity}. {psc_statement}"
+                            f"{company_name} ({company_number}) \n\n{OFFICER_NAME} was appointed {officer_role} of {company_name}pi on {appointed_on} and resigned on {resigned_on}. The nature of business is {activity}. {psc_statement} \n"
                         )
 
                     else:
                         psc_statement = (
-                            "The company has no persons with significant control"
+                            "The company has no persons with significant control."
                         )
                         new_paragraph = former_end.insert_paragraph_before(
-                            f"{company_name} ({company_number}) \n{OFFICER_NAME} was appointed {officer_role} of {company_name} on {appointed_on} and resigned on {resigned_on}. The nature of business is {activity}. {psc_statement}"
+                            f"{company_name} ({company_number}) \n{OFFICER_NAME} was appointed {officer_role} of {company_name} on {appointed_on} and resigned on {resigned_on}. The nature of business is {activity}. {psc_statement} \n"
                         )
 
                 else:
@@ -186,11 +186,11 @@ def generate_relevant_individual_info():
                             psc_statement = f"The company has a person with significant control named {psc_name}."
                             if "active" in company_status:
                                 new_paragraph = current_end.insert_paragraph_before(
-                                    f"{company_name} ({company_number}) \n{OFFICER_NAME} has been serving as {officer_role} of {company_name} since {appointed_on}. The nature of business is {activity}. {psc_statement}"
+                                    f"{company_name} ({company_number}) \n{OFFICER_NAME} has been serving as {officer_role} of {company_name} since {appointed_on}. The nature of business is {activity}. {psc_statement} \n"
                                 )
                             else:
                                 new_paragraph = former_end.insert_paragraph_before(
-                                    f"{company_name} ({company_number}) \n{OFFICER_NAME} served as {officer_role} of {company_name} between {appointed_on} and {company_dis}. The nature of business was {activity}. {psc_statement}"
+                                    f"{company_name} ({company_number}) \n{OFFICER_NAME} served as {officer_role} of {company_name} between {appointed_on} and {company_dis}. The nature of business was {activity}. {psc_statement} \n"
                                 )
                     elif len(psc_names) > 1:
                         last_name = psc_names.pop()
@@ -198,11 +198,11 @@ def generate_relevant_individual_info():
                         psc_statement = f"The company has the following persons with significant control: {full_list} and {last_name}."
                         if "active" in company_status:
                             new_paragraph = current_end.insert_paragraph_before(
-                                f"{company_name} ({company_number}) \n{OFFICER_NAME} has been serving as {officer_role} of {company_name} since {appointed_on}. The nature of business is {activity}. {psc_statement}"
+                                f"{company_name} ({company_number}) \n{OFFICER_NAME} has been serving as {officer_role} of {company_name} since {appointed_on}. The nature of business is {activity}. {psc_statement} \n"
                             )
                         else:
                             new_paragraph = former_end.insert_paragraph_before(
-                                f"{company_name} ({company_number}) \n{OFFICER_NAME} served as {officer_role} of {company_name} between {appointed_on} and {company_dis}. The nature of business is {activity}. {psc_statement}"
+                                f"{company_name} ({company_number}) \n{OFFICER_NAME} served as {officer_role} of {company_name} between {appointed_on} and {company_dis}. The nature of business is {activity}. {psc_statement} \n"
                             )
 
                     else:
@@ -211,11 +211,11 @@ def generate_relevant_individual_info():
                         )
                         if "active" in company_status:
                             new_paragraph = current_end.insert_paragraph_before(
-                                f"{company_name} ({company_number}) \n{OFFICER_NAME} has been serving as {officer_role} of {company_name} since {appointed_on}. The nature of business is {activity}. {psc_statement}"
+                                f"{company_name} ({company_number}) \n{OFFICER_NAME} has been serving as {officer_role} of {company_name} since {appointed_on}. The nature of business is {activity}. {psc_statement} \n"
                             )
                         else:
                             new_paragraph = former_end.insert_paragraph_before(
-                                f"{company_name} ({company_number}) \n{OFFICER_NAME} served as {officer_role} of {company_name} between {appointed_on} and {company_dis}. The nature of business was {activity}. {psc_statement}"
+                                f"{company_name} ({company_number}) \n{OFFICER_NAME} served as {officer_role} of {company_name} between {appointed_on} and {company_dis}. The nature of business was {activity}. {psc_statement}\n"
                             )
     
     # Save the document as a Word file
