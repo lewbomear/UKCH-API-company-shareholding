@@ -6,7 +6,8 @@ import requests
 from print_shareholder_info import print_shareholder_info
 from dotenv import load_dotenv
 from datetime import datetime
-
+import pdfkit
+import tempfile
 
 def generate_relevant_individual_info():
     """
@@ -15,7 +16,7 @@ def generate_relevant_individual_info():
     load_dotenv()
 
     document = docx.Document()
-
+    
     API_KEY = os.environ.get("COMPANY_HOUSE_API_KEY")
     OFFICER_NAME = os.environ.get("OFFICER_NAME")
     OFFICER_DOB = os.environ.get("OFFICER_DOB")
@@ -66,7 +67,7 @@ def generate_relevant_individual_info():
     
     # print(json.dumps(exact_name_dob_matches, indent=4))
     print(len(exact_name_dob_matches))
-
+    print("Generating...")
     officer_data_cache = []  # Store data for all matches
 
     for match in exact_name_dob_matches:
@@ -108,10 +109,16 @@ def generate_relevant_individual_info():
         merged_officer_data = []
         for data in officer_data_cache:
             merged_officer_data.extend(data)
+    else:
+        merged_officer_data = []
+        for data in officer_data_cache:
+            merged_officer_data.extend(data)
+        company_count = 0    
 
         # Loop through the officer's appointments and print the company name, number, and nature of business
         for data in merged_officer_data:
             for appointment in data["items"]:
+                company_count += 1 
                 company_name = appointment["appointed_to"]["company_name"]
                 company_number = appointment["appointed_to"]["company_number"]
                 appointed_on = appointment["appointed_on"]
@@ -129,6 +136,7 @@ def generate_relevant_individual_info():
                 )
                 company_profile_data = company_profile_response.json()
 
+                
                 # Get the SIC code and look up the activity in the mapping dictionary
                 sic_code = company_profile_data.get("sic_codes", ["N/A"])[0]
                 activity = sic_mapping.get(sic_code, "Unknown")
@@ -158,7 +166,7 @@ def generate_relevant_individual_info():
                             psc_name = psc["name"]
                             psc_names.append(psc_name)
                 else:
-                    print("No PSC data available for this company.")
+                    print(".")
 
                 if "resigned_on" in appointment:
                     resigned_on = appointment["resigned_on"]
@@ -225,11 +233,13 @@ def generate_relevant_individual_info():
                                 f"{company_name} ({company_number}) \n{OFFICER_NAME} served as {officer_role} of {company_name} between {formatted_appointed_date} and {formatted_dis_date}. The nature of business was {activity}. {psc_statement}\n"
                             )
     
+    #document.add_paragraph(f"Total number of companies associated with the individual: {company_count}")
+    
     # Save the document as a Word file
     document.save(f"Associated companies for {OFFICER_NAME}.docx")
     document_text = docx.Document(f"Associated companies for {OFFICER_NAME}.docx")
     print(document_text)
-
+    print("Complete")
 
 if __name__ == "__main__":
     generate_relevant_individual_info()
