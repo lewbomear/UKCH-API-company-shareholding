@@ -105,20 +105,19 @@ def generate_relevant_individual_info():
 
         officer_data_cache.append(officer_data)
 
-    if multiple_pages:
-        merged_officer_data = []
-        for data in officer_data_cache:
-            merged_officer_data.extend(data)
-    else:
-        merged_officer_data = []
-        for data in officer_data_cache:
-            merged_officer_data.extend(data)
-        company_count = 0    
+        if multiple_pages:
+            merged_officer_data = []
+            for data in officer_data_cache:
+                merged_officer_data.extend(data)
+        else:
+            merged_officer_data = []
+            for data in officer_data_cache:
+                merged_officer_data.extend(data)
+            
 
         # Loop through the officer's appointments and print the company name, number, and nature of business
         for data in merged_officer_data:
             for appointment in data["items"]:
-                company_count += 1 
                 company_name = appointment["appointed_to"]["company_name"]
                 company_number = appointment["appointed_to"]["company_number"]
                 appointed_on = appointment["appointed_on"]
