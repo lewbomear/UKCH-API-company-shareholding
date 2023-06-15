@@ -3,11 +3,11 @@ import csv
 import os
 import json
 import requests
+import openpyxl
 from print_shareholder_info import print_shareholder_info
 from dotenv import load_dotenv
 from datetime import datetime
-import pdfkit
-import tempfile
+from openpyxl import Workbook
 
 def generate_relevant_individual_info():
     """
@@ -16,6 +16,16 @@ def generate_relevant_individual_info():
     load_dotenv()
 
     document = docx.Document()
+    workbook = Workbook()
+    worksheet = workbook.active
+    worksheet.append(["Company", "Reg Number", "Status", "Officer Role", "Appointed On", "Resigned On", "Person with significant control"])
+    worksheet.auto_filter.ref = worksheet.dimensions
+    column_widths = [50, 15, 15, 15, 15, 15, 50]  
+
+    for i, width in enumerate(column_widths, start=1):
+        column_letter = openpyxl.utils.get_column_letter(i)
+        worksheet.column_dimensions[column_letter].width = width
+
     
     API_KEY = os.environ.get("COMPANY_HOUSE_API_KEY")
     OFFICER_NAME = os.environ.get("OFFICER_NAME")
@@ -196,6 +206,7 @@ def generate_relevant_individual_info():
 
                 else:
                     if len(psc_names) == 1:
+                        formatted_resign_date = "N/a"
                         for psc_name in psc_names:
                             psc_statement = f"The company has a person with significant control named {psc_name}."
                             if "active" in company_status:
@@ -207,6 +218,7 @@ def generate_relevant_individual_info():
                                     f"{company_name} ({company_number}) \n{OFFICER_NAME} served as {officer_role} of {company_name} between {formatted_appointed_date} and {formatted_dis_date}. The nature of business was {activity}. {psc_statement} \n"
                                 )
                     elif len(psc_names) > 1:
+                        formatted_resign_date = "N/a"
                         last_name = psc_names.pop()
                         full_list = ", ".join(psc_names)
                         psc_statement = f"The company has the following persons with significant control: {full_list} and {last_name}."
@@ -220,25 +232,36 @@ def generate_relevant_individual_info():
                             )
 
                     else:
+                        formatted_resign_date = "N/a"
                         psc_statement = (
                             "The company has no persons with significant control."
                         )
                         if "active" in company_status:
+                            formatted_resign_date = "N/a"
                             new_paragraph = current_end.insert_paragraph_before(
                                 f"{company_name} ({company_number}) \n{OFFICER_NAME} has been serving as {officer_role} of {company_name} since {formatted_appointed_date}. The nature of business is {activity}. {psc_statement} \n"
                             )
                         else:
+                            formatted_resign_date = "N/a"
                             new_paragraph = former_end.insert_paragraph_before(
                                 f"{company_name} ({company_number}) \n{OFFICER_NAME} served as {officer_role} of {company_name} between {formatted_appointed_date} and {formatted_dis_date}. The nature of business was {activity}. {psc_statement}\n"
                             )
     
+    
+    #document.add_paragraph(f"Total number of companies associated with the individual: {company_count}")
+    # add info to excel spreadsheet
+    #worksheet.append([company_name, company_number, company_status, officer_role, formatted_appointed_date, formatted_resign_date, psc_name])
     #document.add_paragraph(f"Total number of companies associated with the individual: {company_count}")
     
     # Save the document as a Word file
     document.save(f"Associated companies for {OFFICER_NAME}.docx")
     document_text = docx.Document(f"Associated companies for {OFFICER_NAME}.docx")
     print(document_text)
+    #workbook.save(f"Associated companies for {OFFICER_NAME}.xlsx")
     print("Complete")
+
+
+    
 
 if __name__ == "__main__":
     generate_relevant_individual_info()
