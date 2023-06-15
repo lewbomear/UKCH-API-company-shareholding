@@ -251,7 +251,7 @@ def generate_relevant_individual_info():
     #document.add_paragraph(f"Total number of companies associated with the individual: {company_count}")
     # add info to excel spreadsheet
     #worksheet.append([company_name, company_number, company_status, officer_role, formatted_appointed_date, formatted_resign_date, psc_name])
-    #document.add_paragraph(f"Total number of companies associated with the individual: {company_count}")
+    #document.add_paragraph(f"Total number of companies associated with the individual: {company_count}")#
     
     # Save the document as a Word file
     document.save(f"Associated companies for {OFFICER_NAME}.docx")
