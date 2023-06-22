@@ -246,18 +246,18 @@ def generate_relevant_individual_info():
                             new_paragraph = former_end.insert_paragraph_before(
                                 f"{company_name} ({company_number}) \n{OFFICER_NAME} served as {officer_role} of {company_name} between {formatted_appointed_date} and {formatted_dis_date}. The nature of business was {activity}. {psc_statement}\n"
                             )
-    
+                worksheet.append([company_name, company_number, company_status, officer_role, formatted_appointed_date, formatted_resign_date, psc_name])
     
     #document.add_paragraph(f"Total number of companies associated with the individual: {company_count}")
     # add info to excel spreadsheet
-    #worksheet.append([company_name, company_number, company_status, officer_role, formatted_appointed_date, formatted_resign_date, psc_name])
+            
     #document.add_paragraph(f"Total number of companies associated with the individual: {company_count}")#
     
     # Save the document as a Word file
     document.save(f"Associated companies for {OFFICER_NAME}.docx")
     document_text = docx.Document(f"Associated companies for {OFFICER_NAME}.docx")
     print(document_text)
-    #workbook.save(f"Associated companies for {OFFICER_NAME}.xlsx")
+    workbook.save(f"Associated companies for {OFFICER_NAME}.xlsx")
     print("Complete")
 
 
