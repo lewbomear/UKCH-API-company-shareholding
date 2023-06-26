@@ -29,6 +29,7 @@ def print_shareholder_info():
     ITEMS = response_json["items"]
 
     # Check each confirmation statement to only select the latest confirmation statement with updates
+    confirmation_statement_found = False
     for item in ITEMS:
         description = item["description"]
         if "confirmation-statement-with-updates" in description.lower():
@@ -48,67 +49,79 @@ def print_shareholder_info():
             # Write the content to a file named "confirmation_statement.pdf"
             with open("confirmation_statement.pdf", "wb") as f:
                 f.write(document_content)
-            break
 
-    pages = convert_from_path(
-        "confirmation_statement.pdf",
-        250,
-        poppler_path=r"C:\Program Files\poppler-23.01.0\Library\bin",
-    )
+            pages = convert_from_path(
+                "confirmation_statement.pdf",
+                250,
+                poppler_path=r"C:\Program Files\poppler-23.01.0\Library\bin",
+            )
 
-    images = []
-    for page in pages:
-        images.append(page)
+            images = []
+            for page in pages:
+                images.append(page)
 
-    # Combine all the images into one
-    combined_image = Image.new(
-        "RGB", (images[0].width, sum([i.height for i in images]))
-    )
-    y_offset = 0
-    for image in images:
-        combined_image.paste(image, (0, y_offset))
-        y_offset += image.height
+            # Combine all the images into one
+            combined_image = Image.new(
+                "RGB", (images[0].width, sum([i.height for i in images]))
+            )
+            y_offset = 0
+            for image in images:
+                combined_image.paste(image, (0, y_offset))
+                y_offset += image.height
 
-    # Save the combined image (note for later: see if i can save the image as a temp file)
-    combined_image.save("confirmation_statement.png", "PNG")
+            # Save the combined image (note for later: see if i can save the image as a temp file)
+            combined_image.save("confirmation_statement.png", "PNG")
 
-    # Set the path to Tesseract
-    pytesseract.pytesseract.tesseract_cmd = (
-        r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-    )
+            # Set the path to Tesseract
+            pytesseract.pytesseract.tesseract_cmd = (
+                r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+            )
 
-    # Load the image
-    combined_image = Image.open("confirmation_statement.png")
+            # Load the image
+            combined_image = Image.open("confirmation_statement.png")
 
-    # Use pytesseract to extract text from the image and format it into one paragraph, while limiting instances of three spaces to two
-    text = (
-        pytesseract.image_to_string(combined_image)
-        .replace("\n\n", "\n")
-        .replace("\n", "  ")
-        .replace("confirmation  statement", "confirmation statement")
-        .replace("this  confirmation", "this confirmation")
-        .replace("of  this confirmation", "of this confirmation")
-        .replace("date  of this", "date of this")
-        .replace(r"\b([A-Z][a-z]+)  ([A-Z][a-z]+)\b", r"\1 \2")
-    )
+            # Use pytesseract to extract text from the image and format it into one paragraph, while limiting instances of three spaces to two
+            text = (
+                pytesseract.image_to_string(combined_image)
+                .replace("\n\n", "\n")
+                .replace("\n", "  ")
+                .replace("confirmation  statement", "confirmation statement")
+                .replace("this  confirmation", "this confirmation")
+                .replace("of  this confirmation", "of this confirmation")
+                .replace("date  of this", "date of this")
+                .replace(r"\b([A-Z][a-z]+)  ([A-Z][a-z]+)\b", r"\1 \2")
+            )
 
-    print(text)
+            print(text)
 
-    # Find all instances of "(?<!0 )(\d+) ORDINARY shares held as at the date of this confirmation statement" and the name that follows
-    shares = re.findall(
-        r"(?<!0 )(\d+) ORDINARY shares held as at the date of this confirmation statement  Name: (\S+(?: \S+)*)",
-        text,
-    )
+            # Check if the text contains "Full details of Shareholders"
+            if "Full details of Shareholders" in text:
+                confirmation_statement_found = True
+                break
 
-    # Calculate the total number of shares
-    total_shares = sum([int(share[0]) for share in shares])
+    if confirmation_statement_found:
+        # Find all instances of "(?<!0 )(\d+) ORDINARY shares held as at the date of this confirmation statement" and the name that follows
+        shares = re.findall(
+            r"(?<!0 )(\d+) ORDINARY shares held as at the date of this confirmation statement  Name: (\S+(?: \S+)*)",
+            text,
+        )
 
-    # Create a list of the shareholders and their percentage of shares
-    shareholders = []
-    for share in shares:
-        percentage = round(int(share[0]) / total_shares * 100, 2)
-        shareholders.append(f"- {share[1]} - {percentage}%")
+        # Calculate the total number of shares
+        total_shares = sum([int(share[0]) for share in shares])
 
-    # Combine the shareholders into a string and print it
-    shareholders_string = "\n".join(shareholders)
-    print(f"The company has the following shareholders:\n{shareholders_string}")
+        # Create a list of the shareholders and their percentage of shares
+        shareholders = []
+        for share in shares:
+            percentage = round(int(share[0]) / total_shares * 100, 2)
+            shareholders.append(f"- {share[1]} - {percentage}%")
+
+        # Combine the shareholders into a string and print it
+        shareholders_string = "\n".join(shareholders)
+        print(f"The company has the following shareholders:\n{shareholders_string}")
+    else:
+        print("No ownership information identified.")
+
+    print('Complete')
+
+
+print_shareholder_info()

@@ -10,6 +10,7 @@ from datetime import datetime
 from openpyxl import Workbook
 from audit_trail import save_page_as_pdf
 
+
 def generate_relevant_individual_info():
     """
     Generates information for an individual associate's company data
@@ -42,6 +43,15 @@ def generate_relevant_individual_info():
     current_end = document.add_paragraph("-")
     former_heading = document.add_heading("Former appointments", level=1)
     former_end = document.add_paragraph("--")
+
+    # Create a folder with officer_name
+    folder_path = os.path.join(".", OFFICER_NAME)  # Use current directory as the base path
+    os.makedirs(folder_path, exist_ok=True)  # Create the folder if it doesn't exist
+    
+
+    # Create a 'sources' folder within the officer's folder
+    sources_folder_path = os.path.join(folder_path, "sources")
+    os.makedirs(sources_folder_path, exist_ok=True)
 
     # Load the SIC codes and descriptions from the CSV file
     with open(
@@ -250,7 +260,7 @@ def generate_relevant_individual_info():
                 worksheet.append([company_name, company_number, company_status, officer_role, formatted_appointed_date, formatted_resign_date, psc_name])
                 
                 pdf_url = f'https://find-and-update.company-information.service.gov.uk/company/{company_number}'
-                pdf_path = fr'C:\Users\liubo\VSCode Projects\UKCH-API-company-shareholding-2\Audit trail\{company_name}.pdf'
+                pdf_path = fr'C:\Users\liubo\VSCode Projects\UKCH-API-company-shareholding-2\{OFFICER_NAME}\sources\{company_name}.pdf'
                 save_page_as_pdf(pdf_url, pdf_path, company_name)
     #document.add_paragraph(f"Total number of companies associated with the individual: {company_count}")
     # add info to excel spreadsheet
@@ -260,10 +270,10 @@ def generate_relevant_individual_info():
     
     
     # Save the document as a Word file
-    document.save(f"Associated companies for {OFFICER_NAME}.docx")
-    document_text = docx.Document(f"Associated companies for {OFFICER_NAME}.docx")
+    document.save(os.path.join(folder_path, f"Associated companies for {OFFICER_NAME}.docx"))
+    document_text = docx.Document(os.path.join(folder_path, f"Associated companies for {OFFICER_NAME}.docx"))
     print(document_text)
-    workbook.save(f"Associated companies for {OFFICER_NAME}.xlsx")
+    workbook.save(os.path.join(folder_path, f"Associated companies for {OFFICER_NAME}.xlsx"))
     print("Complete")
 
 
