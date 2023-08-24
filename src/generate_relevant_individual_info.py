@@ -4,7 +4,10 @@ import os
 import json
 import requests
 import openpyxl
-from print_shareholder_info import print_shareholder_info
+import re
+from pdf2image import convert_from_path
+import pytesseract
+from PIL import Image
 from dotenv import load_dotenv
 from datetime import datetime
 from openpyxl import Workbook
@@ -148,7 +151,7 @@ def generate_relevant_individual_info():
                 company_status = appointment["appointed_to"]["company_status"]
                 psc_name = ""
                 company_title = f"{company_name} ({company_number})"
-
+                
                 # Get the company profile URL
                 company_profile_url = f"https://api.company-information.service.gov.uk/company/{company_number}"
                 company_profile_response = requests.get(
@@ -204,7 +207,7 @@ def generate_relevant_individual_info():
                         full_list = ", ".join(psc_names)
                         psc_statement = f"The company has the following persons with significant control: {full_list} and {last_name}."
                         new_paragraph = former_end.insert_paragraph_before(
-                            f"{company_name} ({company_number}) \n{OFFICER_NAME} was appointed {officer_role} of {company_name} on {formatted_appointed_date} and resigned on {formatted_resign_date}. The nature of business is {activity}. {psc_statement} \n"
+                            f"{company_name} ({company_number}) \n{OFFICER_NAME} was appointed {officer_role} of {company_name} on {formatted_appointed_date} and resigned on {formatted_resign_date}. The nature of business is {activity}. {psc_statement}  \n"
                         )
 
                     else:
@@ -217,6 +220,7 @@ def generate_relevant_individual_info():
 
                 else:
                     if len(psc_names) == 1:
+                       
                         formatted_resign_date = "N/a"
                         for psc_name in psc_names:
                             psc_statement = f"The company has a person with significant control named {psc_name}."
@@ -255,19 +259,14 @@ def generate_relevant_individual_info():
                         else:
                             formatted_resign_date = "N/a"
                             new_paragraph = former_end.insert_paragraph_before(
-                                f"{company_name} ({company_number}) \n{OFFICER_NAME} served as {officer_role} of {company_name} between {formatted_appointed_date} and {formatted_dis_date}. The nature of business was {activity}. {psc_statement}\n"
+                                f"{company_name} ({company_number}) \n{OFFICER_NAME} served as {officer_role} of {company_name} between {formatted_appointed_date} and {formatted_dis_date}. The nature of business was {activity}. {psc_statement} \n"
                             )
                 worksheet.append([company_name, company_number, company_status, officer_role, formatted_appointed_date, formatted_resign_date, psc_name])
                 
                 pdf_url = f'https://find-and-update.company-information.service.gov.uk/company/{company_number}'
                 pdf_path = fr'C:\Users\liubo\VSCode Projects\UKCH-API-company-shareholding-2\{OFFICER_NAME}\sources\{company_name}.pdf'
                 save_page_as_pdf(pdf_url, pdf_path, company_name)
-    #document.add_paragraph(f"Total number of companies associated with the individual: {company_count}")
-    # add info to excel spreadsheet
-            
-    #document.add_paragraph(f"Total number of companies associated with the individual: {company_count}")#
-
-    
+       
     
     # Save the document as a Word file
     document.save(os.path.join(folder_path, f"Associated companies for {OFFICER_NAME}.docx"))
